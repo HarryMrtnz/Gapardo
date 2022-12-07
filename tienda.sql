@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2022 a las 00:01:29
+-- Tiempo de generación: 07-12-2022 a las 16:52:51
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -18,59 +18,59 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `gapardo`
+-- Base de datos: `tienda`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Estructura de tabla para la tabla `categoria`
 --
 
-CREATE TABLE `categorias` (
+CREATE TABLE `categoria` (
   `id_categoria` int(100) NOT NULL,
-  `categoria` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `tipoCategoria` int(10) NOT NULL
+  `nombre_categoria` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `fk_tipo` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `categorias`
+-- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categorias` (`id_categoria`, `categoria`, `tipoCategoria`) VALUES
-(1, 'Guitarras', 1),
-(2, 'Violines', 1),
-(3, 'Bajos', 1),
-(4, 'Flautas', 2),
-(5, 'Saxos', 2),
-(6, 'Armónicas', 2),
-(7, 'Baterías', 3),
-(8, 'Xilófonos', 3),
-(9, 'Panderetas', 3);
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `fk_tipo`) VALUES
+(1, 'Guitarra', 1),
+(2, 'Violin', 1),
+(3, 'Bajo', 1),
+(4, 'Flauta', 2),
+(5, 'Saxo', 2),
+(6, 'Armónica', 2),
+(7, 'Batería', 3),
+(8, 'Xilófono', 3),
+(9, 'Pandereta', 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `instrumentos`
+-- Estructura de tabla para la tabla `instrumento`
 --
 
-CREATE TABLE `instrumentos` (
+CREATE TABLE `instrumento` (
   `id_instrumento` int(100) NOT NULL,
-  `nombreInstrumento` varchar(100) NOT NULL,
-  `marcaInstrumento` varchar(100) NOT NULL,
-  `descripcionInstrumento` text NOT NULL,
-  `detallesInstrumento` text NOT NULL,
-  `precioInstrumento` double(9,2) NOT NULL,
-  `cantidadInstrumento` int(100) NOT NULL,
-  `fotoInstrumento` varchar(100) NOT NULL,
-  `categoriaInstrumento` int(100) NOT NULL
+  `nombre_instrumento` varchar(100) NOT NULL,
+  `marca` varchar(100) NOT NULL,
+  `descripcion` text NOT NULL,
+  `detalle` text NOT NULL,
+  `precio` double(9,2) NOT NULL,
+  `cantidad` int(100) NOT NULL,
+  `foto` varchar(100) NOT NULL,
+  `fk_categoria` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `instrumentos`
+-- Volcado de datos para la tabla `instrumento`
 --
 
-INSERT INTO `instrumentos` (`id_instrumento`, `nombreInstrumento`, `marcaInstrumento`, `descripcionInstrumento`, `detallesInstrumento`, `precioInstrumento`, `cantidadInstrumento`, `fotoInstrumento`, `categoriaInstrumento`) VALUES
+INSERT INTO `instrumento` (`id_instrumento`, `nombre_instrumento`, `marca`, `descripcion`, `detalle`, `precio`, `cantidad`, `foto`, `fk_categoria`) VALUES
 (1, 'Guitarra criolla clásica', 'Gracia M1\r\n\r\n', 'Guitarra para diestros natural\r\n\r\n', 'Construida de Abedul.\r\nTiene 6 cuerdas de nailon.\r\nGuitarra versátil que se adapta a una gran variedad de estilos musicales.\r\n', 19800.00, 60, 'Guitarra criolla clásica.jpg', 1),
 (2, 'Guitarra eléctrica GRX40 ', 'Ibanez RG GIO\r\n\r\n', 'Color negro y blanco\r\n\r\n', 'Fabricada en álamo.\r\nCon 6 cuerdas y 22 trastes de tamaño medium jumbo.\r\nEl largo de escala es de 25.5 \".\r\nEl puente es tremolo.\r\nIncluye 3 micrófonos humbucker, simples.\r\nControles de selector de micrófonos, tono y volumen.\r\nPalanca incluida.\r\nSonidos fuertes y firmes con un estilo propio.\r\n', 51900.00, 80, 'Guitarra eléctrica GRX40.jpg', 1),
 (3, 'Guitarra acústica EG481SCX \r\n\r\n', 'Takamine\r\n\r\n', 'Color negro mate.\r\n\r\n', 'Tapa de abeto.\r\nAcabado de gloss.\r\nForma del cuerpo: jumbo.\r\nTiene 6 cuerdas de metal.\r\nGuitarra versátil que se adapta a una gran variedad de estilos musicales.\r\n', 205600.00, 65, 'Guitarra acústica EG481SCX-W.jpg', 1),
@@ -95,19 +95,19 @@ INSERT INTO `instrumentos` (`id_instrumento`, `nombreInstrumento`, `marcaInstrum
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipos`
+-- Estructura de tabla para la tabla `tipo`
 --
 
-CREATE TABLE `tipos` (
+CREATE TABLE `tipo` (
   `id_tipo` int(10) NOT NULL,
-  `nombreTipos` varchar(100) NOT NULL
+  `nombre_tipo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `tipos`
+-- Volcado de datos para la tabla `tipo`
 --
 
-INSERT INTO `tipos` (`id_tipo`, `nombreTipos`) VALUES
+INSERT INTO `tipo` (`id_tipo`, `nombre_tipo`) VALUES
 (1, 'Cuerda'),
 (2, 'Vientos'),
 (3, 'Percusión'),
@@ -116,103 +116,94 @@ INSERT INTO `tipos` (`id_tipo`, `nombreTipos`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuarios` (
-  `ID` int(8) UNSIGNED NOT NULL,
-  `NOMBRE` varchar(100) DEFAULT NULL,
-  `APELLIDO` varchar(100) DEFAULT NULL,
-  `EMAIL` varchar(100) NOT NULL,
-  `CLAVE` varchar(100) DEFAULT NULL,
-  `NIVEL` varchar(100) DEFAULT NULL,
-  `FECHA_ALTA` datetime DEFAULT NULL,
-  `ESTADO` enum('activo','banneado') NOT NULL DEFAULT 'activo'
+CREATE TABLE `usuario` (
+  `id_usuario` int(8) UNSIGNED NOT NULL,
+  `nombre_usuario` varchar(100) DEFAULT NULL,
+  `apellido` varchar(100) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `clave` varchar(100) DEFAULT NULL,
+  `nivel` varchar(100) DEFAULT NULL,
+  `fecha_alta` datetime DEFAULT NULL,
+  `estado` enum('activo','banneado') NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`ID`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `NIVEL`, `FECHA_ALTA`, `ESTADO`) VALUES
-(1, 'Bautista', 'Carloni', 'gr@dv.com', '81dc9bdb52d04dc20036dbd8313ed055', 'usuario', '2014-11-06 21:35:46', 'activo'),
-(9, 'Bart', 'Simpson', 'bs@gmail.com', '731309c4bb223491a9f67eac5214fb2e', 'usuario', '2022-07-28 21:29:05', 'activo'),
-(12, 'Harry', 'Mrtnz', 'hm@dv.net', 'b59c67bf196a4758191e42f76670ceba', 'Admin', '2022-09-06 18:49:21', 'activo');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `categorias`
+-- Indices de la tabla `categoria`
 --
-ALTER TABLE `categorias`
+ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`),
-  ADD KEY `codigoTipo` (`tipoCategoria`);
+  ADD KEY `codigoTipo` (`fk_tipo`);
 
 --
--- Indices de la tabla `instrumentos`
+-- Indices de la tabla `instrumento`
 --
-ALTER TABLE `instrumentos`
+ALTER TABLE `instrumento`
   ADD PRIMARY KEY (`id_instrumento`),
-  ADD KEY `codigoCategoria` (`categoriaInstrumento`);
+  ADD KEY `codigoCategoria` (`fk_categoria`);
 
 --
--- Indices de la tabla `tipos`
+-- Indices de la tabla `tipo`
 --
-ALTER TABLE `tipos`
+ALTER TABLE `tipo`
   ADD PRIMARY KEY (`id_tipo`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `usuario`
 --
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `sdfsdfsdfdsfdsf` (`EMAIL`) USING BTREE;
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `sdfsdfsdfdsfdsf` (`email`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
-ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+ALTER TABLE `categoria`
+  MODIFY `id_categoria` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `instrumentos`
+-- AUTO_INCREMENT de la tabla `instrumento`
 --
-ALTER TABLE `instrumentos`
-  MODIFY `id_instrumento` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+ALTER TABLE `instrumento`
+  MODIFY `id_instrumento` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT de la tabla `tipos`
+-- AUTO_INCREMENT de la tabla `tipo`
 --
-ALTER TABLE `tipos`
+ALTER TABLE `tipo`
   MODIFY `id_tipo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
-ALTER TABLE `usuarios`
-  MODIFY `ID` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(8) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `categorias`
+-- Filtros para la tabla `categoria`
 --
-ALTER TABLE `categorias`
-  ADD CONSTRAINT `codigoTipo` FOREIGN KEY (`tipoCategoria`) REFERENCES `tipos` (`id_tipo`);
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `codigoTipo` FOREIGN KEY (`fk_tipo`) REFERENCES `tipo` (`id_tipo`);
 
 --
--- Filtros para la tabla `instrumentos`
+-- Filtros para la tabla `instrumento`
 --
-ALTER TABLE `instrumentos`
-  ADD CONSTRAINT `codigoCategoria` FOREIGN KEY (`categoriaInstrumento`) REFERENCES `categorias` (`id_categoria`);
+ALTER TABLE `instrumento`
+  ADD CONSTRAINT `codigoCategoria` FOREIGN KEY (`fk_categoria`) REFERENCES `categoria` (`id_categoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
