@@ -3,52 +3,35 @@
     require_once('models/categoriaModel.php');
     require_once('models/productoModel.php');
 
-
     class ProductoController{
         public $nombre;
         public $idCategoria;
 
-
         public function index( $parametros = array() ){
+            
             $categoria = new CategoriaModel();
             $lista = $categoria->lista();
+
             $producto = new ProductoModel();
-            $listaProductos = $producto->listar();
+            $listaProductos = $producto->listar($categoria);
 
             require_once('views/header.html');
-            require_once('views/productosView.php');
+            require_once('views/productoView.php');
             require_once('views/footer.html');
+        }
 
+        public function detalle(){
+            $id = $_GET['id'];
 
+            $producto = new productoModel();
+            $mostrarDetalle = $producto->detalle($id);
+
+            require_once('views/header.html');
+            require_once('views/detalleView.php');
+            require_once('views/footer.html');
         }
 
 
-        public function listar( $parametros = array() ){
-            echo 'Ahora vamos a listar la categoria ';
-            print_r($parametros);
-
-
-        }
-
-        public function crear( $parametros = array() ){
-            // Recibo las variables por POST
-            print_r( $parametros  );
-            echo 'Crear usuario';
-
-            // Instancio el modelo 
-
-            // Ejecuto las querys
-        }
-
-        public function actualizar($parametros = array()){
-            print_r( $parametros  );
-            echo 'Actulizando';
-        }
-
-        public function eliminar( $parametros = array() ){
-            print_r( $parametros  );
-            echo 'Eliminando usuario';
-        }
     }
 
 ?>

@@ -3,31 +3,42 @@
 
     class ProductoModel extends ConexionDB {
 
-        public $id_instrumento;
+        public $idInstrumento;
         public $nombreInstrumento;
-        public $marcaInstrumento;
-        public $descripcionInstrumento;
-        public $detallesInstrumento;
-        public $precioInstrumento;
-        public $cantidadInstrumento;
-        public $fotoInstrumento;
-        public $categoriaInstrumento;
+        public $marca;
+        public $descripcion;
+        public $detalle;
+        public $precio;
+        public $cantidad;
+        public $foto;
+        public $fkCategoria;
 
         public function listar(){
-            $this->setQuery("SELECT id_instrumento, nombreInstrumento,  precioInstrumento, fotoInstrumento
-                            FROM instrumentos");
+            $this->setQuery("SELECT * FROM instrumento");
+
             $resultado = $this->obtenerRow();
             return $resultado;
-
         }
 
-        public function guardar(){
-            $this->setQuery("");
-            $this->ejecutar(array(
-                
-            ));
+/*         public function listar($categoria){
+            $this->setQuery("SELECT * FROM instrumento
+                            WHERE fk_categoria = '$categoria';");
+
+            $resultado = $this->obtenerRow();
+            return $resultado;
+        } */
+
+        public function detalle($id){
+            $this->setQuery("SELECT * FROM instrumento
+                            WHERE id_instrumento = $id");
+
+            $resultado = $this->obtenerRow();
+            return $resultado;
         }
+
+
 
         
+
     }
 ?>

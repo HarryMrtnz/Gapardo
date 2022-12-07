@@ -1,6 +1,7 @@
 <?php
 
     require_once('models/categoriaModel.php');
+    require_once('models/productoModel.php');
 
     class CategoriaController{
         public $nombre;
@@ -8,8 +9,16 @@
 
 
         public function index( $parametros = array() ){
+            $categoria = $_GET['categoria'];
+
             $categoria = new CategoriaModel();
             $lista = $categoria->lista();
+            
+/*             $producto = new ProductoModel();
+            $listaProductos = $producto->listar(); */
+            
+            $producto = new ProductoModel();
+            $listaProductos = $producto->listar($categoria);
 
             require_once('views/header.html');
             require_once('views/categoriaABMView.php');

@@ -1,9 +1,9 @@
-<main id="login">        
+        <main id="login">        
              
             <div class="login">
                 <div>
                     <h5>INICIAR SESION</h5>
-                    <img src="img/login.png" alt="login">
+                    <img src="public/img/login.png" alt="login">
                 </div>
                 <form method="post" action="usuario/login" name="login">
                     <p>Ingresa tus datos:</p>
@@ -31,7 +31,7 @@
                 </script>
      
                 <ul>¿No tenés cuenta?<br>
-                    <a href="altauser.html">¡Registrate!</a>
+                    <a href="usuario/registrarse">¡Registrate!</a>
                 </ul>
             </div>
         </main>

@@ -13,17 +13,16 @@
                     <?php
                         for ($i=0; $i < count($lista) ; $i++) { 
                             $id =  $lista[$i]['id_categoria'];
-                            $nombre = $lista[$i]['categoria'];
-                            $tipoCategoria = $lista[$i]['tipoCategoria'];
+                            $nombreCategoria = $lista[$i]['nombre_categoria'];
+                            $nombreTipo = $lista[$i]['nombre_tipo'];
 
                             echo "
                                     <tr>
-                                    <td>$nombre</td>
-                                    <td>$tipoCategoria</td>
+                                    <td>$nombreCategoria</td>
+                                    <td>$nombreTipo</td>
                                     <td><a href ='categoria/actualizar'>MODIFICAR</a> | <a href =''>BORRAR </a></td>
                                 </tr>
                             ";
-
                         }
 
                     ?>              
@@ -71,28 +70,22 @@
                         <th>PRODUCTOS</th> <th>OPCIONES</th>
                     </tr>
     
+                    <?php
+                        foreach ($listaProductos as $item) {
+                            
+                            $nombreInstrumento = $item['nombre_instrumento'];
+
+                            echo "
+                                <tr>
+                                    <td>$nombreInstrumento</td>
+                                    <td><a href ='categoria/actualizar'>MODIFICAR</a> | <a href =''>BORRAR </a></td>
+                                </tr>
+                            ";
+                        }
+                    ?>
+
                     <tr>
                         <td>Producto 1</td>
-                        <td><a href="modifprod.html">MODIFICAR</a> | <a href="">BORRAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>Producto 2</td>
-                        <td><a href="modifprod.html">MODIFICAR</a> | <a href="">BORRAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>Producto 3</td>
-                        <td><a href="modifprod.html">MODIFICAR</a> | <a href="">BORRAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>Producto 4</td>
-                        <td><a href="modifprod.html">MODIFICAR</a> | <a href="">BORRAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>Producto 5</td>
-                        <td><a href="modifprod.html">MODIFICAR</a> | <a href="">BORRAR</a></td>
-                    </tr>
-                    <tr>
-                        <td>Producto 6</td>
                         <td><a href="modifprod.html">MODIFICAR</a> | <a href="">BORRAR</a></td>
                     </tr>
                                     

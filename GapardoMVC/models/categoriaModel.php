@@ -3,47 +3,20 @@
 
     class CategoriaModel extends ConexionDB {
         public $idCategoria;
-        public $nombre;
+        public $nombreCategoria;
         public $tipoCategoria;
 
-
+        /* Lista en el ABM */
         public function lista(){
-            $this->setQuery("SELECT id_categoria, categoria, tipoCategoria
-                            FROM categorias");
+            $this->setQuery("SELECT id_categoria, nombre_categoria, nombre_tipo
+                            FROM categoria
+                            INNER JOIN tipo ON id_tipo = fk_tipo");
 
             $resultado = $this->obtenerRow();
             return $resultado;
         }
 
-
-
-        public function guardar(){
-            $this->setQuery("INSERT INTO categorias(categoria, tipoCategoria)
-                            VALUES(:categoria, :tipoCategoria)");
-            $this->ejecutar(array(
-                ':nombre' => $this->nombre,
-                ':tipoCategoria' => $this->tipoCategoria
-            ));
-        }
-
-        public function eliminar(){
-            $this->setQuery("DELETE FROM categorias
-                             WHERE id_categoria = :idCategoria");
-            
-            $this->ejecutar(array(
-                ':idCategoria' => $this->idCategoria,
-            ));
-        }
-
-
-        public function actualizar(){
-            $this->setQuery("UPDATE categorias
-                            SET categoria = 'otra cosa'
-                            WHERE id_categoria = :idCategoria");
-            $this->ejecutar(array(
-                            ':idCategoria' => $this->idCategoria,
-            ));               
-        }
+        
 
     }
 ?>

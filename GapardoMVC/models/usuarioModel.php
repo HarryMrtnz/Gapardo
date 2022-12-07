@@ -3,25 +3,48 @@
 
     class UsuarioModel extends ConexionDB {
         public $idUsuario;
-        public $nombre;
+        public $nombreUsuario;
         public $apellido;
         public $email;
-        public $password;
+        public $clave;
+        public $nivel;
+        public $fecha;
 
-        public function guardar(){
-            $this->setQuery("INSERT INTO usuarios(nombre, apellido, email, password)
-                            VALUES(:nombre,:apellido, :email, :passsword)");
+        public function ver(){
+            $this->setQuery("SELECT nombre_usuario, apellido, email
+                            FROM usuario");
+
+            $resultado = $this->obtenerRow(array());
+            return $resultado;
+        }
+
+        /*public function ver($email){
+            $this->setQuery("SELECT nombre_usuario, apellido, email
+                            FROM usuario
+                            WHERE email = :email ");
+
+            $resultado = $this->obtenerRow(array(
+                ':email' => $this->email
+            ));
+            return $resultado;        } */
+
+
+        public function registrar(){
+            $this->setQuery("INSERT INTO usuario (nombre_usuario, apellido, email, clave, nivel, fecha_alta)
+                            VALUES(:nombre_usuario, :apellido, :email, :clave, :nivel, :fecha_alta)");
             $this->ejecutar(array(
-                ':nombre' => $this->nombre,
+                ':nombre_usuario' => $this->nombreUsuario,
                 ':apellido' => $this->apellido,
                 ':email' => $this->email,
-                ':password' => $this->password
-            ));
+                ':clave' => $this->clave,
+                ':nivel' => $this->nivel,
+                ':fecha_alta' => $this->fecha
+            ));            
         }
 
         public function eliminar(){
             $this->setQuery("DELETE usuario
-                             WHERE idUsuario = :idUsuario");
+                             WHERE id_usuario = :idUsuario");
             
             $this->ejecutar(array(
                 ':idUsuario' => $this->idUsuario,
@@ -29,15 +52,26 @@
         }
 
         public function login(){
-            $this->setQuery("SELECT idUsuario, nombre, email
-                             WHERE email = :email AND password = :password");
-            $this->obtenerRow(array(
+            $this->setQuery("SELECT email, clave
+                            FROM usuario
+                            WHERE email = :email AND clave = :clave;");
+            $resultado = $this->obtenerRow(array(
                         ':email' => $this->email,
-                        ':password' => $this->password
+                        ':clave' => $this->clave
             ));
+            return $resultado;
         }
 
-        
+        public function actualizar($nombreUsuario, $apellido){
+            $this->setQuery("UPDATE usuario
+                            SET nombre_usuario = :nombreUsuario,
+                            apeliido = :apellido
+                            WHERE id_usuario = :idUsuario");
+            $this->ejecutar(array(
+                            ':nombre_usuario' => $this->nombreUsuario,
+                            ':apellido' => $this->apellido
+            ));               
+        }
 
     }
 ?>
