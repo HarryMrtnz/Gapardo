@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/estilos.css">
+		<title>CONTACTO</title>
+	</head>
+
+	<body>
+		<header>
+
+		</header>
+
+		<main id="contacto">	
+			<div class="form">
+				<h5>DEJANOS TU CONSULTA.</h5>
+
+				<form class="form-control" action="recibir.php" method="post" name="datos">
+
+					<div>
+						<label>Nombre:</label>
+						<input type="text" class="form-control" placeholder="Ej: Jonathan Emanuel" name="nombre" required/>
+					</div>
+					<div>
+						<label>Apellido:</label>
+						<input type="text" class="form-control" placeholder="Ej: Cruz" name="apellido" required/>
+					</div>
+					<div>
+						<label>Correo electrónico:</label>
+						<input type="email" class="form-control" placeholder ="Ej: abc@xyz.com" name="email" required/>
+						</label>
+					</div>
+					<div>
+						<label>Mensaje:</label>
+						<textarea class="form-control2" placeholder= "Deja tu opinión o comentario aquí." name="mensaje" required></textarea>
+					</div>
+					<div class="validar">
+						<div>
+							<input type="submit" id="boton" disabled="disabled" onclick="valida_envia()"/>
+						</div>
+						<div>
+							<label class="valid">
+								<input type="checkbox" id="check"/> Acepto los términos y condiciones.</br>
+								Si aún no los leiste has <a href="terminos.html">click aquí.</a>
+							</label>
+						</div>
+					</div>
+				</form>
+			</div>	
+
+			<script type="text/javascript">
+				var check = document.getElementById('check');
+				var boton = document.getElementById('boton');
+
+				check.onclick = function(){
+					if(check.checked){
+						boton.disabled = false;
+					}else{
+						boton.disabled = true;
+					}
+				}
+
+			function valida_envia(){
+				if(document.datos.nombre.value.length==0){
+					alert("Por favor, escriba su nombre.")
+					document.datos.nombre.focus()
+					return 0;
+				}
+				
+				if(document.datos.apellido.value.length==0){
+					alert("Por favor, escriba su apellido.")
+					document.datos.apellido.focus()
+					return 0;
+				}
+			
+				if(document.datos.email.value.length==0){
+					alert("Por favor, escriba su correo electrónico.")
+					document.datos.email.focus()
+					return 0;
+				}
+
+				if(document.datos.mensaje.value.length==0){
+					alert("Por favor, escriba su consulta o comentario.")
+					document.datos.mensaje.focus()
+					return 0;
+				}
+			}
+
+			</script>
+
+			<div class="visit">
+			<h5>VISITANOS EN NUESTROS LOCALES.</h5></br>				
+				<div class ="ubi">
+					<div>
+						<img src="img/pin.png" alt="pin">
+					</div>
+					<div>
+						<h6>UBICACION:</h6>
+						<ul>
+							<li>P. Sherman - Calle Wallaby 42 - Sidney</li>
+							<li>Calle falsa 123 - Springfield</li>
+							<li>Av. Corrientes 2037 - CABA</li>
+						</ul>
+					</div>
+				</div>
+				<div class ="hora">
+					<div>
+						<img src="img/reloj.png" alt="reloj">
+					</div>
+					<div>
+						<h6>HORARIOS DE ATENCION:</h6>
+						<ul>
+							<li>Lunes a Viernes de 1:00hs a 23:00hs</li>
+							<li>Sabados y Feriados de 15:00hs a 15:30hs</li>
+						</ul>
+					</div>
+				</div>
+				<div class ="tel">
+					<div>
+						<img src="img/telefono.png" alt="telefono">
+					</div>
+					<div>
+						<h6>TELEFONOS:</h6>
+						<ul>
+							<li>Línea 1: 0810-2222-772</li>
+							<li>Línea 2: 011-4123-1234</li>
+							<li>Línea 3: 15-4321-9876</li>
+						</ul>
+					</div>
+				</div>
+			</div>	
+		</main>
+
+		<footer>
+
+		</footer>
+
+	</body>
+</html>

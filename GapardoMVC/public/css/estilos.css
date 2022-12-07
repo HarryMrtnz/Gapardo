@@ -1,0 +1,1166 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+                                /* HEADER */
+header div {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+}
+
+header ul li {
+    display: inline;
+    padding: 10px;
+    border: 1px orangered solid;
+}
+
+header ul li a{
+    text-decoration: none;
+    color:aliceblue;
+}
+
+header a:hover {
+    color: orange;
+}
+
+                                /* FOOTER */
+footer {
+    width: 90%;
+    margin: auto;
+
+}
+footer nav {
+    height: 50px;
+    margin-top: 20px;
+}
+
+footer h5{
+    text-align: left;
+    color: orangered;
+}
+
+footer ul li {
+    display: inline;
+}
+
+footer ul li a img{
+    max-height: 50px;
+    padding: 20px;
+}
+
+footer img:hover {
+    transform: scale(1.2);
+}
+
+footer div {
+    text-align: right;
+    color: orangered;
+}
+
+                                /* BODY */
+body {
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue; 
+}
+                                /* INDEX */
+.instrums {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#quienesomo {
+    text-align: center;
+    height: 50px;
+    color: orangered;
+}
+
+.somos {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-content: center;
+}
+
+.historia h3 {
+    text-align: center;
+}
+
+.historia p {
+    padding: 20px;
+}
+
+.mision h3 {
+    text-align: center;
+}
+
+.mision p {
+    padding: 20px;
+}
+                                /* PRODUCTOS */
+#productos {
+    width: 90%;
+    display: grid;
+    margin: auto;
+}
+
+.productos {
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 230px);
+    grid-template-rows: 230px 300px 230px;
+    grid-gap: 20px;
+    justify-content: center;
+    height: 2000px;
+
+}
+
+.productos h1 {
+    border: 1px solid orangered;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productos div {
+    height: 230px;
+    border-radius: 10px;
+}
+
+.productos .img-fluid {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgb(117, 112, 112);
+}
+
+.productos .img-fluid:hover {
+    border: 1px solid yellow;
+}
+
+.categorias ul{
+    list-style-type: none;
+    border: 1px solid orangered;
+    border-radius: 10px;
+    padding-top: 20px;
+    
+    display: grid;
+    justify-content: center;
+}
+
+.categorias ul li {
+    padding: 10px;
+}
+
+.categorias ul li a {
+    text-decoration: none;
+    color:aliceblue;
+    display: flex;
+    align-items: center;
+}
+
+.categorias ul li a:hover {
+    color: yellow;
+    transform: scale(1.05);
+}
+
+.prods {
+    display: grid;
+    grid-template-columns: repeat(4, 230px);
+    grid-gap: 20px;
+}
+
+.prods .items {
+    height: 300px;
+    padding-top: 20px;
+    border: 1px solid orangered;
+    border-radius: 10px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    background: white;
+    font-size: 15px;
+}
+
+.items:hover {
+    border: 1px solid white;
+}
+
+.prods nav ul {
+    list-style-type: none;
+    margin: auto;
+}
+
+.prods ul li a {
+    text-decoration: none;
+    color:black;
+}
+
+.precio {
+    color: red;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prods img {
+    max-width: 220px;
+    max-height: 240px;
+}
+                                /* BOTON BACK */
+.back {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.back ul {
+    padding: 10px;
+    border: 1px solid yellow;
+    border-radius: 10px;
+    text-align: center;
+}
+.back ul a {
+    text-decoration: none;
+    color: yellow;
+}
+
+.back ul a:hover {
+    color:orangered;    
+}
+                                /* FICHA */
+#ficha {
+    padding-top: 30px;
+}
+
+.ficha {
+    width: 50%;
+    margin: auto;
+    padding-top: 10px;
+    background: white;
+    border: 3px solid red;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+
+.ficha h3 {
+    padding-top: 10px;
+    width: 100%;
+    color: black;
+    text-align: center;
+    grid-column: 1/3;
+}
+
+.fichaimg {
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.ficha img {
+    max-width: 100%;
+    max-height: 500px;
+}
+
+.ficha .info {
+    margin: 20px;
+    text-align: left;
+    display: grid;
+    align-items: center;
+}
+.ficha h5 {
+    color: orangered;
+    padding-top: 20px;
+}
+
+.ficha p {
+    color: gray;
+}
+
+.ficha h5 b {
+    color: slategray;
+    font-size: 20px;
+    text-align: start;
+}
+
+                                /* CONTACTO */
+#contacto {
+    width: 80%;
+    margin: auto;
+    padding-top: 30px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form {
+    width: 80%;
+    height: 450px;
+    display: grid;
+    margin: auto;
+    background: rgb(47, 45, 45);
+    border-radius: 10px;
+    border: 1px solid gray;    
+}
+
+.form  h5 {
+    font-size: 20px;
+    padding-top: 10px;
+    margin: auto ;
+}
+
+.form-control div {
+    width: 350px;
+    display: grid;
+    margin: auto;
+}
+
+.form-control label {
+    color: aliceblue;
+    padding-top: 15px;
+}
+
+.form-control {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.validar {
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+/* .validar div {
+
+} */
+
+.valid {
+    margin-left: -260px;
+}
+
+.form .form-control2 {
+    max-width: 350px;
+    min-width: 350px;
+    min-height: 50px;
+    border-radius: 5px;
+}
+
+.form .form-control label a {
+    color: orange;
+    padding-top: 15px;
+    text-decoration: none;
+}
+
+.form .form-control label a:hover {
+    color: gray;
+}
+
+#boton {
+    margin-top: 10px;
+    padding: 5px;
+    color: rgb(58, 55, 55);
+    border-radius: 5px;
+    width: 80px;
+}
+
+.visit {
+    width: 80%;
+    height: 450px;
+    display: grid;
+    margin: auto;
+    background: rgb(47, 45, 45);
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.visit div {
+    display: grid;
+    grid-gap: 5px;
+}
+
+.ubi, .hora, .tel {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 10px;
+}
+
+.visit h5 {
+    font-size: 20px;
+    padding-top: 20px;
+    margin: auto ;
+}
+
+.visit h6 {
+    color: orange;
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.visit ul {
+    list-style-type: none;
+}
+
+.visit ul li {
+    padding: 5px;
+}
+
+.visit img {
+    width: 50px;
+    padding: 20px;
+    text-align: center;
+    filter: invert(36%) 
+        sepia(98%) 
+        saturate(937%) 
+        hue-rotate(350deg) 
+        brightness(94%) 
+        contrast(103%);
+}
+                                /* RECIBIR */
+#recibir {
+    padding-top: 30px;
+}
+
+.recibir {
+    width: 50%;
+    margin: auto;
+}
+
+.recibir div {
+    background: rgb(47, 45, 45);
+    border-radius: 10px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+.recibir h3 {
+    color: orangered;
+    padding: 10px;
+}
+
+.recibir p {
+    padding: 10px;
+    margin: auto;
+}
+
+.error {
+    margin-top: 20px;
+    margin: auto;
+    color: orange;
+    width: 60%;
+    display: grid;
+    grid-template-columns: auto auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.error img {
+    width: 50px;
+    padding: 20px;
+}
+
+.correo {
+    margin-top: 20px;
+    width: auto;
+    color: aqua;
+    padding: 20px;
+}
+                                /* TERMINOS */
+#terminos h2{
+    color: orangered;
+    padding-top: 10px;
+}
+
+#terminos {
+    width: 80%;
+    margin: auto;
+}
+
+#terminos div {
+    padding: 20px;
+}
+
+#terminos b {
+    color: orange;
+}
+                                /* LOGIN USER */
+#login {
+    padding-top: 30px;
+}
+
+.login {
+    width: 400px;
+    min-height: 300px;
+    height: auto;
+    margin: auto;
+    background: rgb(47, 45, 45);
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.login div {
+    width: 60%;
+    display: grid;
+    grid-template-columns: auto auto ;
+    align-items: center;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+}
+
+.login h5 {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.login [alt="login"]{
+    width: 30px;
+    filter: invert(100%) 
+        sepia(12%) 
+        saturate(0%) 
+        hue-rotate(354deg) 
+        brightness(102%) 
+        contrast(103%);
+}
+
+.login form {
+    padding: 20px;
+}
+
+.login form p {
+    color: orange;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.login form div {
+    display: flex;
+    padding-top: 10px;
+}
+
+#boton2 {
+    padding-top: 10px;
+    padding: 5px;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+    margin: auto;
+}
+
+#boton2:hover {
+    color: yellow;
+    border-color: orange;
+}
+
+.login ul {
+    text-align: center;
+    margin: 10px;
+}
+
+.login ul a {
+    text-decoration: none;
+    color: orange;
+}
+
+.login ul a:hover {
+    color: yellow;
+}
+
+.login h6 {
+    font-size: 15px;
+    color: red;
+    padding: 10px;    
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-left: -50px;
+}
+
+.login [alt="checkno"] {
+    width: 50px;
+    display: flex;
+    padding: 10px;
+    float: left;
+    padding-left: 85px;
+}
+                        /* ALTA USER */
+#altauser {
+    padding-top: 30px;
+}
+
+.alta {
+    width: 400px;
+    min-height: 300px;
+    height: auto;
+    margin: auto;
+    background: rgb(47, 45, 45);
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.alta div {
+    width: 60%;
+    display: grid;
+    grid-template-columns: auto auto ;
+    align-items: center;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+}
+
+.alta h5 {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.alta [alt="ag"]{
+    width: 30px;
+    filter: invert(100%) 
+        sepia(12%) 
+        saturate(0%) 
+        hue-rotate(354deg) 
+        brightness(102%) 
+        contrast(103%);
+}
+
+.alta form {
+    padding: 20px;
+}
+
+.alta form p {
+    color: orange;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.alta form div {
+    display: flex;
+    padding-top: 10px;
+}
+
+#boton3 {
+    width: 100px;;
+    padding: 5px;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#boton3:hover {
+    color: yellow;
+    border-color: orange;
+}
+
+.alta [alt="checkyes"] {
+    width: 50px;
+    display: flex;
+    padding: 10px;
+    float: left;
+    padding-left: 85px;
+}
+
+.alta h6 {
+    font-size: 15px;
+    color: lightgreen;
+    padding: 10px;    
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-left: -30px;
+}
+.log{
+    text-align: center;
+    padding: 20px;
+}
+
+.alta ul a {
+    text-decoration: none;
+    color: orange;
+    width: 35%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.alta ul a:hover {
+    text-decoration: none;
+    color: yellow;
+    border: 1px solid yellow;  
+}
+                            /* MDOERADOR */
+#mod {
+    width: 70%;
+    height: 400px;
+    margin: auto;
+}
+
+.mod {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+}
+
+.mod img {
+    filter: invert(36%) 
+        sepia(98%) 
+        saturate(937%) 
+        hue-rotate(350deg) 
+        brightness(94%) 
+        contrast(103%);
+}
+
+.mod img:hover {
+    transform: scale(1.1);
+}
+                        /* CERRAR SESION */
+[alt="salir"] {
+    width: 20px;
+    filter: invert(100%) 
+        sepia(12%) 
+        saturate(0%) 
+        hue-rotate(354deg) 
+        brightness(102%) 
+        contrast(103%);
+    padding-left: 5px;
+}
+
+.salir a {
+    text-decoration: none;
+    font-size: 12px;
+    margin: 10px;
+    color: orange;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 130px;
+    display: flex;
+    align-items: center;
+}
+
+.salir a:hover {
+    text-decoration: none;
+    color: yellow;
+    border: 1px solid yellow;  
+}
+
+.salir{
+    width: 100%;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-top: 10px;
+}
+                                /* PANEL */
+#panel {
+    width: 90%;
+    margin: auto;
+}
+
+#panel h4 {
+    font-size: 20px;
+    text-align: center;
+    color: orangered;
+    padding-top: 30px;
+}
+
+#panel h5 {
+    padding: 10px;
+    padding-top: 30px;
+    font-size: 15px;
+    text-align: center;
+    color: gray;
+}
+
+.panel {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.tabla-cat {
+    background: rgb(86, 73, 73);
+    border-radius: 10px;
+    border: 1px solid orange;
+    width: 70%;
+    margin: auto;
+}
+
+.tabla-cat th {
+    color: darkgrey;
+    padding: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.tabla-cat td {
+    padding: 5px;
+    padding-left: 25px;
+}
+
+.tabla-cat a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.tabla-cat a:hover {
+    color: orange;
+}
+
+.tabla-cat tr:hover {
+    color: orange;
+}
+
+.cat2 form {
+    background: rgb(86, 73, 73);
+    border: 1px solid orange;
+    width: 70%;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    display: grid;
+}
+
+.cat2 label {
+    padding: 5px;
+    padding-top: 15px;
+}
+.cat2 .form-control {
+    width: 60%;
+    margin: auto;
+}
+
+.tabla-inst {
+    background: rgb(86, 73, 73);
+    border: 1px solid orange;
+    width: 70%;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.tabla-inst th {
+    color: darkgrey;
+    padding: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.tabla-inst td {
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.tabla-inst a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.tabla-inst a:hover {
+    color: orange;
+}
+
+.tabla-inst tr:hover {
+    color: orange;
+}
+
+.inst2 form {
+    background: rgb(86, 73, 73);
+    border: 1px solid orange;
+    width: 70%;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    display: grid;
+    margin: auto;
+}
+
+.inst2 .form-control {
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.inst2 label {
+    margin-top: 15px;
+}
+
+#panel .back {
+    margin-top: 20px;
+}
+
+                    /* MODIFICAR CATEGORIA */
+#modcat {
+    padding-top: 30px;
+    width: 70%;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+}
+
+.modcat {
+    background: rgb(86, 73, 73);
+    border: 1px solid orange;
+    width: 30%;
+    min-height: 200px;
+    border-radius: 10px;
+    margin: auto;
+    padding: 20px;
+}
+
+#modcat .modcat form {
+    display: grid;
+    padding-top: 10px;
+}
+
+#modcat .modcat .input {
+    width: 50%;
+    margin: auto;
+}
+
+#modcat .modcat label {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+#ok1 {
+    padding-top: 30px;
+}
+
+.ok {
+    background: rgb(86, 73, 73);
+    border: 1px solid orange;
+    width: 30%;
+    min-height: 200px;
+    border-radius: 10px;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    margin: auto;
+}
+
+.ok img {
+    width: 60px;
+    padding: 20px;
+    margin-left: 10px;
+    padding-top: 20px;
+}
+
+.ok .p1 {
+    padding-top: 20px;
+}
+.ok p {
+    color: rgb(47, 228, 47);
+    padding: 3px;
+    padding-right: 40px;
+}
+
+.ok .back {
+    display: grid;
+    grid-column: span 1/3;
+    text-align: center;
+    padding-right: 30px;
+    margin-top: -5px;
+    
+}
+
+                   /* ALTA CATEGORIA */
+#altacat {
+    padding-top: 30px;
+    width: 70%;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+}
+                /* MODIFICAR PRODUCTO */
+#modprod {
+    padding-top: 30px;
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.inst3 {
+    width: 50%;
+    margin: auto;
+}
+
+.inst3 h5{
+    padding: 15px;
+}
+.inst3 form {
+    background: rgb(86, 73, 73);
+    border: 1px solid orange;
+    width: 70%;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    display: grid;
+    margin: auto;
+}
+
+.inst3 .form-control {
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.inst3 label {
+    margin-top: 15px;
+}
+                   /* ALTA PRODUCTO */
+#altaprod {
+    padding-top: 30px;
+    width: 70%;
+    height: 350px;
+    margin: auto;
+    text-align: center;
+}
+
+                   /* PLUS VIDEO */
+#plus {
+    padding-top: 30px;
+    width: 80%;
+    display: grid;
+    margin: auto;
+}
+
+.plus {
+    background: rgb(51, 46, 46);
+    border-radius: 20px;
+    border: 1px solid orangered;
+    color: orange;
+    padding: 20px;
+    text-align: center;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.plus iframe {
+    padding: 20px;
+}
+
+#plus .back {
+    margin-top: 20px;
+}
+                            /* ADMIN */
+#admin {
+    padding-top: 30px;
+    width: 90%;
+    margin: auto;
+}
+
+.die {
+    width: 30%;
+    height: 250px;
+    background: rgb(60, 48, 48);
+    text-align: center;    
+    border: 1px solid orangered;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-columns: auto 70%;
+    align-items: center;
+    margin: auto;  
+}
+
+.die img {
+    /* filter: invert(28%) 
+        sepia(96%) 
+        saturate(5171%) 
+        hue-rotate(352deg) 
+        brightness(102%) 
+        contrast(135%); */
+    width: 100px;
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.die .stop {
+    color: red;
+    padding: 20px;
+    padding-left: -10px;
+    padding-top: 40px;
+}
+
+.die .back {
+    display: grid;
+    grid-column: span 1/3;
+}
+
+.die footer {
+    margin-top: 200px;
+    height: 100px;
+}
+
+.admin h5 {
+    color:orangered;
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.tabla-users {
+    background: rgb(86, 73, 73);
+    border-radius: 10px;
+    border: 1px solid orange;
+    width: 70%;
+    margin: auto;
+}
+
+.tabla-users th {
+    color: darkgrey;
+    padding: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.tabla-users td {
+    padding: 5px;
+    padding-left: 25px;
+}
+
+.tabla-users a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.tabla-users a:hover, .tabla-users tr:hover {
+    color: orange;
+}
+
+
+#admin .back {
+    padding-top: 20px;
+}
+
+.admin {
+    min-height: 300px;
+}

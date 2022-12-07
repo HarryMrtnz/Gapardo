@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>MODIFICAR</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <main id="modprod">
+        <div>
+            <div class="inst3">
+                <h5>MODIFICA EL PRODUCTO SELECCIONADO</h5>
+                <form action="" method="post" name ="instrum" enctype="multipart/form-data">
+                    <input type="hidden" name="id_instrumento" value="">Código número: 
+                    <input placeholder="Nombre:" class="form-control" id="nombreInstrumento" type="text" name="nombreInstrumento" value="">
+                    <input placeholder="Marca:" class="form-control" id="marcaInstrumento" type="text" name="marcaInstrumento" value="">
+                    <textarea placeholder="Descripción:" class="form-control" id="descripcionInstrumento" name="descripcionInstrumento" value=""></textarea>
+                    <textarea placeholder="Detalles:" class="form-control" id="detallesInstrumento" name="detallesInstrumento" value=""></textarea>
+                    <input placeholder="Precio:" class="form-control" id="precioInstrumento" type="text" name="precioInstrumento" value="">
+                    <input placeholder="Cantidad en stock:" class="form-control" id="cantidadInstrumento" type="text" name="cantidadInstrumento" value="">
+                    <label for= "fotoInstrumento">Seleccione una imagen del instrumento: </label>
+                    <input class="form-control" id="fotoInstrumento" accept="image/jpeg" type="file" name="fotoInstrumento" value="">
+                    
+                    <label for = "categoria">Seleccione la categoria del instrumento: </label>
+
+                    <select class = "form-control" name = "">
+
+                        <option value="">Categoria 1</option>
+                        <option value="">Categoria 2</option>
+                        <option value="">Categoria 3</option>
+
+                    </select>
+
+                        <input class="form-control" id="boton3" type="submit" value="MODIFICAR">
+                </form>
+
+            </div>
+        </div>
+
+        <div class="back">
+            <ul>
+                <a href="panelabm.html">VOLVER</a>
+            </ul>
+        </div> 
+
+    </main>
+    
+    <footer>
+
+    </footer>
+    
+</body>
+</html>
