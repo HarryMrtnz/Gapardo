@@ -17,7 +17,7 @@ require_once('core/manejador.php');
     // 2. Verifico la ruta que el archivo exista
     // 3. Cargo el archivo
     // 4. Instancion el objeto
-    if(  file_exists($ruta ) ){
+    if(file_exists($ruta) ){
         require_once($ruta);
 
         // Crea el objeto

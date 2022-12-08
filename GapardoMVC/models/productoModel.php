@@ -20,7 +20,7 @@
             return $resultado;
         }
 
-/*         public function listar($categoria){
+/*         public function listarporCategoria($categoria){
             $this->setQuery("SELECT * FROM instrumento
                             WHERE fk_categoria = '$categoria';");
 
