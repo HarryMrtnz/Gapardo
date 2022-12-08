@@ -26,9 +26,9 @@
             $producto = new productoModel();
             $mostrarDetalle = $producto->detalle($id);
 
-            require_once('views/header.html');
+            require_once('views/header2.html');
             require_once('views/detalleView.php');
-            require_once('views/footer.html');
+            require_once('views/footer2.html');
         }
 
 

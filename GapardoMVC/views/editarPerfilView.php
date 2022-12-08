@@ -3,7 +3,7 @@
    <div class="alta">
        <div>
            <h5>ACTUALIZA TUS DATOS</h5>
-           <img src="public/img/editar_black.png" alt="ag">
+           <img src="../public/img/editar.png" alt="ag">
        </div>
        <form method="post" action="actualizar" name="alta">
            <p>Ingresa tus datos:</p>

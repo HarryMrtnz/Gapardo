@@ -26,9 +26,9 @@
 
         public function registrarse( $parametros = array()){
 
-            require_once('views/header.html');
+            require_once('views/header2.html');
             require_once('views/registroView.php');
-            require_once('views/footer.html');
+            require_once('views/footer2.html');
         }
 
         public function registrar( $parametros = array() ){
@@ -104,10 +104,13 @@
 
         public function editar($parametros = array()){
             session_start();
+            if( isset( $_POST['email'] )  && isset( $_POST['clave']) ){
+                return;
+            }
 
-            require_once('views/header.html');
+            require_once('views/header2.html');
             require_once('views/editarPerfilView.php');
-            require_once('views/footer.html'); 
+            require_once('views/footer2.html'); 
         }
         
         public function actualizar($parametros = array()){

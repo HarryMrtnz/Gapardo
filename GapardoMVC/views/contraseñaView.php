@@ -3,7 +3,7 @@
    <div class="alta">
        <div>
            <h5>CAMBIA TU CONTRASEÑA</h5>
-           <img src="public/img/editar.png" alt="ag">
+           <img src="../public/img/editar.png" alt="ag">
        </div>
        <form method="post" action="usuario" name="alta">
            <p>Ingresa una nueva contraseña:</p>

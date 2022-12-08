@@ -3,7 +3,7 @@
         <div class="alta">
             <div>
                 <h5>REGISTRATE</h5>
-                <img src="public/img/ag_cuenta.png" alt="ag">
+                <img src="../public/img/ag_cuenta.png" alt="ag">
             </div>
             <form method="post" action="registrar" name="alta">
                 <p>Ingresa tus datos para registrarte:</p>
