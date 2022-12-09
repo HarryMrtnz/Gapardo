@@ -9,15 +9,23 @@
 
         public function index( $parametros = array() ){
             
-            $categoria = new CategoriaModel();
-            $lista = $categoria->lista();
+/*             if(  ){
+                $categoria = $_GET['categoria'];
 
-            $producto = new ProductoModel();
-            $listaProductos = $producto->listar($categoria);
+                $producto = new ProductoModel();
+                $listaProductos = $producto->verxCategoria($categoria);
 
-            require_once('views/header.html');
-            require_once('views/productoView.php');
-            require_once('views/footer.html');
+            }else{ */
+                $categoria = new CategoriaModel();
+                $lista = $categoria->lista();
+
+                $producto = new ProductoModel();
+                $listaProductos = $producto->listar();
+
+                require_once('views/header.html');
+                require_once('views/productoView.php');
+                require_once('views/footer.html');
+            //}
         }
 
         public function detalle(){

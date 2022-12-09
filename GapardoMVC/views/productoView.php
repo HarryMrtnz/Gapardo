@@ -4,19 +4,19 @@
                 <h1>PRODUCTOS</h1>
 
                 <div>
-                    <a href="producto">
+                    <a href=""> <!-- Filtro para instrumentos tipo cuerda. -->
                     <img src="public/img/cuerdas.jpg" alt="cuerdas" class="img-fluid"></a>
                 </div>
                 <div>
-                    <a href="producto">
+                    <a href=""> <!-- Filtro para instrumentos tipo viento. -->
                     <img src="public/img/vientos.jpg" alt="vientos" class="img-fluid"></a>
                 </div>
                 <div>
-                    <a href="producto">
+                    <a href=""> <!-- Filtro para instrumentos tipo percusion. -->
                     <img src="public/img/percusion.jpg" alt="percusion" class="img-fluid"></a>
                 </div>
                 <div>
-                    <a href="producto">
+                    <a href=""> <!-- Filtro para otro tipo instrumentos o accesorios. -->
                     <img src="public/img/otros.jpg" alt="otros" class="img-fluid"></a>                
                 </div>
                     <!-- Fila 2 -->
@@ -31,7 +31,7 @@
                                 $nombreCategoria = $lista[$i]['nombre_categoria'];
 
                                 echo "<li>
-                                        <a href='producto/listar?categoria=$idCategoria'>$nombreCategoria</a>
+                                        <a href='producto?categoria=$idCategoria#productos'>$nombreCategoria</a>
                                     </li>";
                             }
 

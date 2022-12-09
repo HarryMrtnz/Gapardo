@@ -9,14 +9,10 @@
 
 
         public function index( $parametros = array() ){
-            $categoria = $_GET['categoria'];
 
             $categoria = new CategoriaModel();
             $lista = $categoria->lista();
-            
-/*             $producto = new ProductoModel();
-            $listaProductos = $producto->listar(); */
-            
+
             $producto = new ProductoModel();
             $listaProductos = $producto->listar($categoria);
 
@@ -24,8 +20,6 @@
             require_once('views/categoriaABMView.php');
             require_once('views/footer.html');
 
-            // print_r($lista);
-            //echo '<h1> Renderizo Vista</h1>';
         }
 
         public function crear( $parametros = array() ){

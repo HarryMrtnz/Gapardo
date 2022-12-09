@@ -5,7 +5,7 @@
            <h5>CAMBIA TU CONTRASEÑA</h5>
            <img src="../public/img/editar.png" alt="ag">
        </div>
-       <form method="post" action="usuario" name="alta">
+       <form method="post" action="cambiarContraseña" name="alta">
            <p>Ingresa una nueva contraseña:</p>
         
            <div><input class="form-control" type="password" placeholder="Contraseña:" name="clave" required/></div>

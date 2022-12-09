@@ -18,16 +18,16 @@
             return $resultado;
         }
 
-        /*public function ver($email){
+/*         public function ver($email){
             $this->setQuery("SELECT nombre_usuario, apellido, email
                             FROM usuario
-                            WHERE email = :email ");
+                            WHERE email = $email ");
 
             $resultado = $this->obtenerRow(array(
-                ':email' => $this->email
+                //':email' => $this->email
             ));
-            return $resultado;        } */
-
+            return $resultado;
+        } */
 
         public function registrar(){
             $this->setQuery("INSERT INTO usuario (nombre_usuario, apellido, email, clave, nivel, fecha_alta)
@@ -42,36 +42,37 @@
             ));            
         }
 
-        public function eliminar(){
-            $this->setQuery("DELETE usuario
-                             WHERE id_usuario = :idUsuario");
-            
-            $this->ejecutar(array(
-                ':idUsuario' => $this->idUsuario,
-            ));
-        }
-
         public function login(){
             $this->setQuery("SELECT email, clave
                             FROM usuario
                             WHERE email = :email AND clave = :clave;");
             $resultado = $this->obtenerRow(array(
                         ':email' => $this->email,
-                        ':clave' => $this->clave
+                        ':clave' => $this->clave    
             ));
             return $resultado;
         }
 
-        public function actualizar($nombreUsuario, $apellido){
+        public function editar($nombreUsuario, $apellido){
             $this->setQuery("UPDATE usuario
                             SET nombre_usuario = :nombreUsuario,
                             apeliido = :apellido
                             WHERE id_usuario = :idUsuario");
             $this->ejecutar(array(
                             ':nombre_usuario' => $this->nombreUsuario,
-                            ':apellido' => $this->apellido
+                            ':apellido' => $this->apellido,
             ));               
         }
+
+        public function cambiarContraseña(){
+            $this->setQuery("UPDATE usuario
+                            SET clave = :clave
+                            WHERE email = :email");
+            $this->ejecutar(array(
+                            ':clave' => $this->clave,
+            ));               
+        }
+
 
     }
 ?>

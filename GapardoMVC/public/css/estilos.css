@@ -1,7 +1,14 @@
 * {
 	padding: 0px;
 	margin: 0px;
+    /* box-sizing: border-box; */
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+
                                 /* HEADER */
 header div {
     padding: 10px;
@@ -69,8 +76,87 @@ body {
     background-color: black;
     font-family: Arial, Helvetica, sans-serif;
     color: aliceblue; 
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: fixed;
+    background-size: cover;
+
 }
+
+.fotete {
+    opacity: 60%;
+}
+
+.titular {
+    font-size: 20px;
+    color: floralwhite;
+}
+
                                 /* INDEX */
+.carrousel{
+    width: 100%;
+}
+
+.conteCarrousel{
+    margin-top: 30px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.itemCarrousel{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.itemCarrouselTarjeta{
+    width: 100%;
+    height: 100%;
+}
+
+.itemCarrouselArrows{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 95%; 
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+
+}
+
+.itemCarrouselArrows > i:hover {
+    cursor: pointer;
+}
+
+.conteCarrouselController{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.conteCarrouselController > a{
+    text-decoration: none;
+    font-size: 2em;
+    color: grey;
+}
+
+.itemCarrouselArrows > a > i{
+    color: white;
+}
+
+.itemCarrousel img{
+    height: 100%;
+    width: 100%;
+}
+
 .instrums {
     display: flex;
     justify-content: center;
@@ -108,6 +194,8 @@ body {
 .mision p {
     padding: 20px;
 }
+
+
                                 /* PRODUCTOS */
 #productos {
     width: 90%;
@@ -1221,3 +1309,7 @@ body {
 .admin {
     min-height: 300px;
 }
+
+                            /* ERROR */
+
+

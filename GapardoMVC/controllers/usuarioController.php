@@ -71,14 +71,21 @@
             //print_r($resultado[0]);
 
             if( count( $resultado ) > 0  ) {
-                echo 'Datos validos';
+                //echo 'Datos validos';
                 session_start();
                 $_SESSION['email'] = $resultado[0]['email'];
 
                 header('Location: ../usuario');
             } else {
-                echo 'Usuario o contraseña invalidos';
-                echo '<a href="../usuario">Volver</a>';
+                echo "
+                    <script lenguage='javascript'>
+                        alert('Usuario o contraseña incorrecta. Vuelve a intentarlo.')               
+                    </script>
+
+                      <a href='../usuario'>VOLVER AL LOGIN</a>
+                ";
+                //header('Location: '); 
+                
             }
 
         }
@@ -92,32 +99,22 @@
 
         }
 
-        public function crear( $parametros = array() ){
-            // Recibo las variables por POST
-            print_r( $parametros  );
-            echo 'Crear usuario';
-
-            // Intancio el modelo 
-
-            // Ejecuto las querys
-        }
-
         public function editar($parametros = array()){
             session_start();
             if( isset( $_POST['email'] )  && isset( $_POST['clave']) ){
                 return;
             }
-
             require_once('views/header2.html');
             require_once('views/editarPerfilView.php');
             require_once('views/footer2.html'); 
+            
         }
         
         public function actualizar($parametros = array()){
             session_start();
 
             $nombreUsuario = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
+            $apellido = $_POST['apellido']; 
 
             $usuario = new UsuarioModel();
             $usuario->nombreUsuario = $nombreUsuario;
@@ -129,14 +126,31 @@
 
         
         public function cambiar_constraseña($parametros = array()){
-            print_r( $parametros  );
-            echo 'Actulizando';
+            session_start();
+            if( isset( $_POST['email'] )  && isset( $_POST['clave']) ){
+                return;
+            }
+            require_once('views/header2.html');
+            require_once('views/contraseñaView.php');
+            require_once('views/footer2.html'); 
         }
 
-        public function eliminar( $parametros = array() ){
-            print_r( $parametros  );
-            echo 'Eliminando usuario';
+        public function cambiarContraseña( $parametros = array() ){
+
+            //$email = $_SESSION['email'];
+            $clave = $_POST['clave'];
+
+            $usuario = new UsuarioModel();
+            $usuario->clave = sha1( $clave );
+            
+            $usuario->cambiarContraseña();
+            $usuario->logout();
+            header('Location: ../usuario');
+            
+        
         }
+
+
     }
 
 ?>

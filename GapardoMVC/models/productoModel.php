@@ -20,13 +20,13 @@
             return $resultado;
         }
 
-/*         public function listarporCategoria($categoria){
+        public function verxCategoria($categoria){
             $this->setQuery("SELECT * FROM instrumento
-                            WHERE fk_categoria = '$categoria';");
+                            WHERE fk_categoria = $categoria");
 
             $resultado = $this->obtenerRow();
             return $resultado;
-        } */
+        }
 
         public function detalle($id){
             $this->setQuery("SELECT * FROM instrumento
