@@ -4,22 +4,22 @@
                 <h1>PRODUCTOS</h1>
 
                 <div>
-                    <a href=""> <!-- Filtro para instrumentos tipo cuerda. -->
+                    <a href="producto?tipo=1#productos"> <!-- Filtro para instrumentos tipo cuerda. -->
                     <img src="public/img/cuerdas.jpg" alt="cuerdas" class="img-fluid"></a>
                 </div>
                 <div>
-                    <a href=""> <!-- Filtro para instrumentos tipo viento. -->
+                    <a href="producto?tipo=2#productos"> <!-- Filtro para instrumentos tipo viento. -->
                     <img src="public/img/vientos.jpg" alt="vientos" class="img-fluid"></a>
                 </div>
                 <div>
-                    <a href=""> <!-- Filtro para instrumentos tipo percusion. -->
+                    <a href="producto?tipo=3#productos"> <!-- Filtro para instrumentos tipo percusion. -->
                     <img src="public/img/percusion.jpg" alt="percusion" class="img-fluid"></a>
                 </div>
                 <div>
-                    <a href=""> <!-- Filtro para otro tipo instrumentos o accesorios. -->
+                    <a href="producto?tipo=4#productos"> <!-- Filtro para otro tipo instrumentos o accesorios. -->
                     <img src="public/img/otros.jpg" alt="otros" class="img-fluid"></a>                
                 </div>
-                    <!-- Fila 2 -->
+
                 <div id="cates" class="categorias">
 
                     <ul><h3>CATEGORIAS</h3>

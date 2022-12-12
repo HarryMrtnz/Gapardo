@@ -21,7 +21,7 @@
                             document.login.email.focus()
                             return 0;
                         }
-     
+
                         if(document.login.clave.value.length==0){
                             alert("Por favor, escriba su contraseña")
                             document.login.clave.focus()

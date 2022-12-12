@@ -96,13 +96,13 @@ body {
 
                                 /* INDEX */
 .carrousel{
-    width: 100%;
+    align-items: center;
 }
 
 .conteCarrousel{
     margin-top: 30px;
     width: 100%;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
 }
 
@@ -115,6 +115,8 @@ body {
 .itemCarrouselTarjeta{
     width: 100%;
     height: 100%;
+
+    text-align: center;
 }
 
 .itemCarrouselArrows{
@@ -154,7 +156,8 @@ body {
 
 .itemCarrousel img{
     height: 100%;
-    width: 100%;
+    width: auto;
+    
 }
 
 .instrums {

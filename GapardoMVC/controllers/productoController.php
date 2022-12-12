@@ -8,24 +8,29 @@
         public $idCategoria;
 
         public function index( $parametros = array() ){
-            
-/*             if(  ){
+            $categoria = new CategoriaModel();
+            $lista = $categoria->lista();
+
+            if( isset( $_GET['categoria']) ){
                 $categoria = $_GET['categoria'];
 
                 $producto = new ProductoModel();
                 $listaProductos = $producto->verxCategoria($categoria);
+                
+            }else if (isset( $_GET['tipo'])) {
+                $tipo = $_GET['tipo'];
 
-            }else{ */
-                $categoria = new CategoriaModel();
-                $lista = $categoria->lista();
+                $producto = new ProductoModel();
+                $listaProductos = $producto->verxTipo($tipo);
+            }else {
 
                 $producto = new ProductoModel();
                 $listaProductos = $producto->listar();
-
-                require_once('views/header.html');
-                require_once('views/productoView.php');
-                require_once('views/footer.html');
-            //}
+            }          
+            
+            require_once('views/header.html');
+            require_once('views/productoView.php');
+            require_once('views/footer.html'); 
         }
 
         public function detalle(){

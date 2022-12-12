@@ -22,25 +22,7 @@
 
         }
 
-        public function crear( $parametros = array() ){
-            // Recibo las variables por POST
-            print_r( $parametros  );
-            echo 'Crear nueva Categoria';
 
-            // Intancio el modelo 
-
-            // Ejecuto las querys
-        }
-
-        public function actualizar($parametros = array()){
-            print_r( $parametros  );
-            echo 'Actulizando Categorias';
-        }
-
-        public function eliminar( $parametros = array() ){
-            print_r( $parametros  );
-            echo 'Eliminando Categoria';
-        }
     }
 
 ?>

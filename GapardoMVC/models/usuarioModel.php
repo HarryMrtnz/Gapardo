@@ -26,8 +26,8 @@
             $resultado = $this->obtenerRow(array(
                 //':email' => $this->email
             ));
-            return $resultado;
-        } */
+            return $resultado; 
+        }*/
 
         public function registrar(){
             $this->setQuery("INSERT INTO usuario (nombre_usuario, apellido, email, clave, nivel, fecha_alta)
