@@ -10,24 +10,14 @@
         public $nivel;
         public $fecha;
 
-        public function ver(){
-            $this->setQuery("SELECT nombre_usuario, apellido, email
-                            FROM usuario");
-
-            $resultado = $this->obtenerRow(array());
-            return $resultado;
-        }
-
-/*         public function ver($email){
+        public function ver($email){
             $this->setQuery("SELECT nombre_usuario, apellido, email
                             FROM usuario
-                            WHERE email = $email ");
+                            WHERE email = '$email'; ");
 
-            $resultado = $this->obtenerRow(array(
-                //':email' => $this->email
-            ));
+            $resultado = $this->obtenerRow(array());
             return $resultado; 
-        }*/
+        }
 
         public function registrar(){
             $this->setQuery("INSERT INTO usuario (nombre_usuario, apellido, email, clave, nivel, fecha_alta)
@@ -53,23 +43,23 @@
             return $resultado;
         }
 
-        public function editar($nombreUsuario, $apellido){
+        public function actualizarDatos($nombreUsuario, $apellido, $email ){
             $this->setQuery("UPDATE usuario
-                            SET nombre_usuario = :nombreUsuario,
-                            apeliido = :apellido
-                            WHERE id_usuario = :idUsuario");
+                            SET nombre_usuario = :nombre_usuario,
+                            apellido = :apellido
+                            WHERE email = '$email';");
             $this->ejecutar(array(
-                            ':nombre_usuario' => $this->nombreUsuario,
-                            ':apellido' => $this->apellido,
+                ':nombre_usuario' => $nombreUsuario,
+                ':apellido' => $apellido,
             ));               
         }
 
-        public function cambiarContraseña(){
+        public function actualizarContraseña($email, $clave){
             $this->setQuery("UPDATE usuario
                             SET clave = :clave
-                            WHERE email = :email");
+                            WHERE email = '$email';");
             $this->ejecutar(array(
-                            ':clave' => $this->clave,
+                ':clave' => $this->clave,
             ));               
         }
 

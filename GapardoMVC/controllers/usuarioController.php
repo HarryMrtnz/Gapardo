@@ -15,8 +15,10 @@
                 require_once('views/loginView.php');
                 
             }else{
+
+                $email = $_SESSION ['email'];
                 $usuario = new UsuarioModel();
-                $verPerfil = $usuario->ver();
+                $verPerfil = $usuario->ver($email);
 
                 require_once('views/perfilView.php');
             }     
@@ -101,7 +103,7 @@
 
         public function editar($parametros = array()){
             session_start();
-            if( isset( $_POST['email'] )  && isset( $_POST['clave']) ){
+            if( isset( $_POST['email'] )  && isset( $_POST['clave'])){
                 return;
             }
             require_once('views/header2.html');
@@ -110,24 +112,29 @@
             
         }
         
-        public function actualizar($parametros = array()){
+        public function actualizarDatos($parametros = array()){
             session_start();
 
-            $nombreUsuario = $_POST['nombre'];
-            $apellido = $_POST['apellido']; 
-
-            $usuario = new UsuarioModel();
-            $usuario->nombreUsuario = $nombreUsuario;
-            $usuario->apellido = $apellido;
+            if (isset($_SESSION['email'])) {
             
-            $usuario->actualizar();
-            header('Location: ../usuario');
+                $email = $_SESSION['email'];
+
+                $nombreUsuario = $_POST['nombre'];
+                $apellido = $_POST['apellido']; 
+
+                $usuario = new UsuarioModel();
+                $usuario->nombreUsuario = $nombreUsuario;
+                $usuario->apellido = $apellido;
+
+                $usuario->actualizarDatos($nombreUsuario, $apellido, $email);
+                header('Location: ../usuario');
+            }
         }
 
         
         public function cambiar_constraseña($parametros = array()){
             session_start();
-            if( isset( $_POST['email'] )  && isset( $_POST['clave']) ){
+            if( isset( $_POST['email'] ) && isset( $_POST['clave']) ){
                 return;
             }
             require_once('views/header2.html');
@@ -135,19 +142,26 @@
             require_once('views/footer2.html'); 
         }
 
-        public function cambiarContraseña( $parametros = array() ){
-
-            //$email = $_SESSION['email'];
-            $clave = $_POST['clave'];
-
-            $usuario = new UsuarioModel();
-            $usuario->clave = sha1( $clave );
+        public function actualizarContraseña( $parametros = array() ){
+            session_start();
             
-            $usuario->cambiarContraseña();
-            $usuario->logout();
-            header('Location: ../usuario');
-            
-        
+            if (isset($_SESSION['email'])) {
+
+                $email = $_SESSION['email'];
+                $clave = $_POST['clave'];
+                
+                $usuario = new UsuarioModel();
+                $usuario->clave = sha1( $clave);
+                
+                $usuario->actualizarContraseña($email, $clave);
+
+                unset( $_SESSION['email'] );
+                unset( $_SESSION['nivel'] );
+                session_unset();
+                session_destroy();
+
+                header('Location: ../usuario');
+            }
         }
 
 
