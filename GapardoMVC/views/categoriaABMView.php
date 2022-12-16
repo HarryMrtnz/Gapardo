@@ -17,7 +17,7 @@
                             $nombreTipo = $lista[$i]['nombre_tipo'];
 
                             echo "
-                                    <tr>
+                                <tr>
                                     <td>$nombreCategoria</td>
                                     <td>$nombreTipo</td>
                                     <td><a href ='categoria/actualizar'>MODIFICAR</a> | <a href =''>BORRAR </a></td>

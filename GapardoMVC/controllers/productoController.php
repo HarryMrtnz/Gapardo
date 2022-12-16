@@ -39,11 +39,34 @@
             $producto = new productoModel();
             $mostrarDetalle = $producto->detalle($id);
 
+            $verCalificacion = $producto->verCalificacion($id);
+
             require_once('views/header2.html');
             require_once('views/detalleView.php');
             require_once('views/footer2.html');
         }
 
+        public function calificar(){
+
+/*             if( isset( $_POST['email'] )){
+                return;
+            } */
+            
+            //$fkInstrumento = $_GET['id'];
+            $puntuacion = $_POST['puntuacion'];
+            $comentario = $_POST['comentario'];
+
+            $producto = new productoModel();
+            $producto->puntuacion = $puntuacion;
+            $producto->comentario = $comentario;
+            $producto->idUsuario = $idUsuario;
+            //$producto->fecha = 'NOW( )';
+
+            $producto->calificar($puntuacion, $comentario);
+            echo "calificacion añadida";
+            //header('Location: ../producto/detalle?id=$fkInstrumento');
+        
+        }
 
     }
 

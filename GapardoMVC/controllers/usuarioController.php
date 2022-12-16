@@ -81,12 +81,13 @@
             } else {
                 echo "
                     <script lenguage='javascript'>
-                        alert('Usuario o contraseña incorrecta. Vuelve a intentarlo.')               
+                        alert('¡Usuario o contraseña incorrecta! Vuelve a intentarlo.');
+                        window.location.replace('../usuario');
                     </script>
 
-                      <a href='../usuario'>VOLVER AL LOGIN</a>
-                ";
-                //header('Location: '); 
+                    ";
+                    //<a href='../usuario'>VOLVER AL LOGIN</a>
+                    //header('Location: '); 
                 
             }
 

@@ -391,6 +391,116 @@ body {
     text-align: start;
 }
 
+.calificacion {
+    text-align: center;
+}
+
+.calificacion .calificar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calificacion [name="comentario"] {
+    width: 400px;
+}
+
+.calificacion div {
+    padding: 10px;
+}
+  
+#boton4 {
+    width: 100px;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+}
+
+#boton4:hover {
+    color: yellow;
+    border-color: orange;
+}
+
+.calificacion, .puntuacion p {
+    padding-top: 10px;
+}
+  
+.calificacion label {
+    font-size: 20px;
+}
+  
+.calificacion input[type="radio"] {
+    display: none;
+}
+  
+.puntuacion label {
+    color: lightgray;
+}
+  
+.puntuacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+  
+.puntuacion label:hover,
+.puntuacion label:hover ~ label {
+    color: orange;
+}
+  
+.puntuacion input[type="radio"]:checked ~ label {
+    color: orange;
+}
+
+.comentarios div{
+    padding-top: 5px;
+}
+
+.tabla-calif {
+    color: whitesmoke;
+    background-color: rgba(41, 39, 39, 0.9);
+    border-radius: 10px;
+    border: 1px solid orange;
+    width: 70%;
+    margin: auto;
+}
+
+.tabla-calif th {
+    color: darkgrey;
+    padding: 5px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+/* .tabla-calif td{
+    padding: 3px;
+} */
+
+.tabla-calif .nombre {
+    display: flex;
+    align-items: center;
+    width: 150px;
+}
+
+.tabla-calif .estrella{
+    color: yellow;
+    width: 5%;
+}
+
+.tabla-calif .comentario {
+    width: 65%;
+}
+
+#ficha .back {
+    padding-top: 20px;
+}
+
+.tabla-calif img {
+    width: 30px;
+}
+
+
+
+
                                 /* CONTACTO */
 #contacto {
     width: 80%;

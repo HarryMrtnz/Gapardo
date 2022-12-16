@@ -60,7 +60,7 @@
                             WHERE email = '$email';");
             $this->ejecutar(array(
                 ':clave' => $this->clave,
-            ));               
+            ));
         }
 
 
