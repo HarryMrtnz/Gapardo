@@ -23,6 +23,7 @@ header nav {
 }
 
 header ul li {
+    background-color: rgb(46, 43, 43, 60%);
     display: inline;
     padding: 10px;
     border: 1px orangered solid;
@@ -213,7 +214,7 @@ body {
     grid-template-rows: 230px 300px 230px;
     grid-gap: 20px;
     justify-content: center;
-    height: 2000px;
+    min-height: 2000px;
 
 }
 
@@ -226,7 +227,7 @@ body {
 }
 
 .productos div {
-    height: 230px;
+    min-height: 230px;
     border-radius: 10px;
 }
 
@@ -241,6 +242,7 @@ body {
 }
 
 .categorias ul{
+    height: auto;
     list-style-type: none;
     border: 1px solid orangered;
     border-radius: 10px;
@@ -271,6 +273,30 @@ body {
     grid-template-columns: repeat(4, 230px);
     grid-gap: 20px;
 }
+
+.miCarrito {
+    margin-top: 20px;
+    list-style-type: none;
+    border-radius: 10px;
+    border: 1px solid yellow;
+    display: flex;
+    justify-content: center;
+
+}
+
+.miCarrito a {
+    padding: 5px;
+    text-decoration: none;
+    color:aliceblue;
+    display: flex;
+    align-items: center;
+}
+
+.miCarrito a:hover {
+    color: orange;
+    transform: scale(1.05);
+}
+
 
 .prods .items {
     height: 300px;
@@ -444,11 +470,11 @@ body {
   
 .puntuacion label:hover,
 .puntuacion label:hover ~ label {
-    color: orange;
+    color: yellow;
 }
   
 .puntuacion input[type="radio"]:checked ~ label {
-    color: orange;
+    color: yellow;
 }
 
 .comentarios div{
@@ -497,9 +523,6 @@ body {
 .tabla-calif img {
     width: 30px;
 }
-
-
-
 
                                 /* CONTACTO */
 #contacto {

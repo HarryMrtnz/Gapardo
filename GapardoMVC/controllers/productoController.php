@@ -47,12 +47,10 @@
         }
 
         public function calificar(){
+/*             session_start();
+             if( isset( $_SESSION['email'] )){
+                return; */
 
-/*             if( isset( $_POST['email'] )){
-                return;
-            } */
-            
-            //$fkInstrumento = $_GET['id'];
             $puntuacion = $_POST['puntuacion'];
             $comentario = $_POST['comentario'];
 
@@ -60,10 +58,11 @@
             $producto->puntuacion = $puntuacion;
             $producto->comentario = $comentario;
             $producto->idUsuario = $idUsuario;
-            //$producto->fecha = 'NOW( )';
+            $producto->fecha = 'NOW( )';
 
-            $producto->calificar($puntuacion, $comentario);
+            $producto->calificar();
             echo "calificacion añadida";
+
             //header('Location: ../producto/detalle?id=$fkInstrumento');
         
         }

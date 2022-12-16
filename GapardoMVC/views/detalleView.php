@@ -29,7 +29,6 @@
 						</div>
 					";
 				}
-			
 			?>
 
 		</div>
@@ -49,7 +48,7 @@
 					<input id="radio5" type="radio" name="puntuacion" value="1">
 						<label for="radio5">★</label>
 				</div>
-                <div><input class="form-control" type="text" placeholder="Comentá acá pibe:" name="comentario" required/></div>
+                <div><input class="form-control" type="text" placeholder="Iniciá sesión para comentar acá, ¿Dale?:" name="comentario" required/></div>
                 <div><input type="submit" id="boton4" value="Enviar" onclick="valida_envia()"></div>
             </form>
 

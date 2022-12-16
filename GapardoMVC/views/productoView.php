@@ -20,24 +20,38 @@
                     <img src="public/img/otros.jpg" alt="otros" class="img-fluid"></a>                
                 </div>
 
-                <div id="cates" class="categorias">
+                <div>
+                    <div id="cates" class="categorias">
 
-                    <ul><h3>CATEGORIAS</h3>
-            
-                        <?php
+                        <ul><h3>CATEGORIAS</h3>
+                
+                            <?php
 
-                            for ($i=0; $i < count($lista); $i++) { 
-                                $idCategoria = $lista[$i]['id_categoria'];
-                                $nombreCategoria = $lista[$i]['nombre_categoria'];
+                                for ($i=0; $i < count($lista); $i++) { 
+                                    $idCategoria = $lista[$i]['id_categoria'];
+                                    $nombreCategoria = $lista[$i]['nombre_categoria'];
 
-                                echo "<li>
-                                        <a href='producto?categoria=$idCategoria#productos'>$nombreCategoria</a>
-                                    </li>";
-                            }
+                                    echo "<li>
+                                            <a href='producto?categoria=$idCategoria#productos'>$nombreCategoria</a>
+                                        </li>";
+                                }
 
-                        ?>
+                            ?>
+
+                        </ul>
+                    </div>
+
+                    <ul class="miCarrito">
+
+                        <li>
+                            <a href="carrito">
+                                <img src="public/img/carrito" alt="">MI CARRITO
+                                
+                            </a>
+                        </li>
 
                     </ul>
+                    
                 </div>
 
                 <div class="prods">

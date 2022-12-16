@@ -46,15 +46,17 @@
             return $resultado;
         }
 
-        public function calificar ($puntuacion, $comentario, $idUsuario){
+        public function calificar (){
             $this->setQuery("INSERT INTO calificacion (puntuacion, comentario, fk_usuario)
-                            VALUES(:puntuacion, :comentario, :fk_usuario)
-                            ");
+                            VALUES(:puntuacion, :comentario, :fk_usuario)");
 
             $this->ejecutar(array(
-                ':puntuacion' => $puntuacion,
-                ':comentario' => $comentario,
-                ':fk_usuario' => $idUsuario,
+                ':nombre_usuario' => $this->nombreUsuario,
+                ':puntuacion' => $this->puntuacion,
+                ':comentario' => $this->comentario,
+                ':fk_usuario' => $this->idUsuario,
+                ':fecha' => $this->fecha
+                
             ));   
 
         }
