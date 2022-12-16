@@ -52,8 +52,15 @@
             $usuario->fecha = 'NOW( )';
 
             $usuario->registrar();
+            
+            echo "
+                <script lenguage='javascript'>
+                    alert('¡Te has registrado correectamente! Ya puedes iniciar sesión.');
+                    window.location.replace('../usuario');
+                </script>
+            ";
 
-            header('Location: ../usuario');
+            
         }
 
         public function login( $parametros = array() ){
@@ -85,10 +92,7 @@
                         window.location.replace('../usuario');
                     </script>
 
-                    ";
-                    //<a href='../usuario'>VOLVER AL LOGIN</a>
-                    //header('Location: '); 
-                
+                ";
             }
 
         }
@@ -98,7 +102,14 @@
             unset( $_SESSION['nivel'] );
             session_unset();
             session_destroy();
-            header('Location: ../usuario');
+
+            echo"
+                <script lenguage='javascript'>
+                    alert('¡Sesión cerrada correctamente!');
+                    window.location.replace('../usuario');
+                </script>
+            
+            ";
 
         }
 
@@ -128,7 +139,14 @@
                 $usuario->apellido = $apellido;
 
                 $usuario->actualizarDatos($nombreUsuario, $apellido, $email);
-                header('Location: ../usuario');
+
+                echo"
+                    <script lenguage='javascript'>
+                        alert('¡Se actualizaron tus datos!');
+                        window.location.replace('../usuario');
+                    </script>
+                
+                ";
             }
         }
 
@@ -161,7 +179,13 @@
                 session_unset();
                 session_destroy();
 
-                header('Location: ../usuario');
+                echo "
+                    <script lenguage='javascript'>
+                        alert('¡Contraseña actualizada, vuelve a iniciar sesión');
+                        window.location.replace('../usuario');
+                    </script>
+                
+                ";
             }
         }
 
