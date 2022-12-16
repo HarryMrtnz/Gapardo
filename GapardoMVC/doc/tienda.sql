@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2022 a las 03:35:15
+-- Tiempo de generación: 16-12-2022 a las 23:39:00
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -36,14 +36,17 @@ CREATE TABLE `calificacion` (
   `fk_instrumento` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `calificacion`
+-- Estructura de tabla para la tabla `carrito`
 --
 
-INSERT INTO `calificacion` (`id_calificacion`, `comentario`, `puntuacion`, `fecha`, `fk_usuario`, `fk_instrumento`) VALUES
-(1, 'Muy buena guitarra', 5, NULL, 1, 1),
-(2, 'Re mala, suena horrible', 1, NULL, 5, 1),
-(3, 'Excelente calidad! ', 4, NULL, 6, 1);
+CREATE TABLE `carrito` (
+  `id_carrito` int(11) NOT NULL,
+  `total` double DEFAULT NULL,
+  `fk_usuario` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -112,9 +115,22 @@ INSERT INTO `instrumento` (`id_instrumento`, `nombre_instrumento`, `marca`, `des
 (15, 'Flauta traversa JBFL-6248S', 'Knight ', 'Material: Metal\r\nNivel de habilidad: Profesional\r\nTipo de digitación: Alemana\r\nIncluye estuche: Sí\r\n', 'Afinación en C\r\nMaterial: Metal\r\nFlauta de plata\r\nSuperficie Plateado\r\nClave de diseño: 16 hoyos cerrado\r\nTecla de disposición: desalineado G, el tornillo de ajuste\r\nAlmohadillas Italia\r\nNivel de habilidad: Profesional\r\nIncluye estuche\r\nDimensiones: 13 x 8 x 41cm\r\nPeso: 0.9 k\r\nOrigen: China\r\n', 45400.00, 75, 'Flauta traversa JBFL-6248S.jpg', 4),
 (16, 'Saxo alto JBAS-200', 'Knight ', 'Eb Llave F# Laqueado + estuche', 'Excelente Saxo Alto en Eb (Mi Bemol) y llave de F#, cuerpo dorado laqueado, incluye estuche semi rígido y boquilla.', 125300.00, 30, 'Saxo alto JBAS-200.jpg', 5),
 (17, 'Saxo soprano SS650', 'Conn-Selmer', 'nstrumento ideal principiantes\r\nLos saxofones Conn-Selmer son una opción ideal para jóvenes y estudiantes músicos. El tamaño de la soprano es cómodo, ligero y fácil de alcanzar, lo que le permite centrarse en su música.\r\n', 'Cuerpo: Latón\r\nLlaves: Latón\r\nTamaño: Soprano\r\nMástil: Recto\r\nBotones: Blanco perlado\r\nClave: F #\r\nPads: Pisoni\r\nAcabado: Laca del oro\r\nAccesorios incluidos: Maletín ligero\r\n', 180000.00, 40, 'Saxo soprano SS650.jpg', 5),
-(18, 'Saxo plástico Venova', 'Yamaha ', 'El Venova es un tipo completamente nuevo de instrumento que ofrece la expresividad de un instrumento de viento, que utiliza un sistema de digitación tan simple como el de una flauta dulce.', 'Tipo de saxofón	Soprano', 27200.00, 65, 'Saxo plástico Venova.jpg', 5),
+(18, 'Saxo plástico Venova', 'Yamaha ', 'El Venova es un tipo completamente nuevo de instrumento que ofrece la expresividad de un instrumento de viento, que utiliza un sistema de digitación tan simple como el de una flauta dulce.', 'Tipo de saxofón Soprano', 27200.00, 65, 'Saxo plástico Venova.jpg', 5),
 (19, 'Armónica diatónica cromada', 'Magma', 'Armónica Blusera Afina Do + Estuche', 'Medidas: 103x27x21 mm.\r\nPlaca de caña de cobre de 0,9 mm.\r\nCubierta de metal, cromada, gran terminación\r\n', 1300.00, 180, 'Armónica diatónica cromada.jpg', 6),
 (20, 'Armónica cromática 64', 'Hohner', 'Con el nuevo Super 64, HOHNER actualiza este icónico instrumento con un diseño impresionante y una amplia gama de características innovadoras. ', 'Teclas: C\r\nEscribe: cromático\r\nAfinación: afinación en solitario\r\nNumero de agujeros: dieciséis\r\nGama tonal: 4 octavas, C3 - D7\r\nLargo: 19,8 cm / 7,8 \"\r\n', 82300.00, 130, 'Armónica cromática 64 Hohner.jpg', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto_carrito`
+--
+
+CREATE TABLE `producto_carrito` (
+  `id_producto_carrito` int(11) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `carrito_id_carrito` int(11) NOT NULL,
+  `fk_instrumento` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -159,12 +175,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido`, `email`, `clave`, `nivel`, `fecha_alta`, `estado`) VALUES
-(1, 'Harry', 'Mrtnz', 'hm@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '0000-00-00', 'activo'),
-(2, 'Luca', 'Di Nardo', 'luca@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '0000-00-00', 'activo'),
-(3, 'Damian', 'Reyes', 'Dami@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '0000-00-00', 'activo'),
-(4, 'Dibu', 'Martínez', 'Dibu@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '0000-00-00', 'activo'),
-(5, 'Lionel', 'Messi', 'Lio@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '0000-00-00', 'activo'),
-(6, 'Elda', 'Montoto', 'Elda@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '0000-00-00', 'activo');
+(1, 'Harry', 'Mrtnz', 'hm@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(2, 'Luca', 'Di Nardo', 'luca@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(3, 'Damian', 'Reyes', 'Dami@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(4, 'Dibu', 'Martínez', 'Dibu@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(5, 'Lionel', 'Messi', 'Lio@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(6, 'Elda', 'Montoto', 'Elda@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo');
 
 --
 -- Índices para tablas volcadas
@@ -175,8 +191,15 @@ INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido`, `email`, `cla
 --
 ALTER TABLE `calificacion`
   ADD PRIMARY KEY (`id_calificacion`),
-  ADD KEY `fk_usuario` (`fk_usuario`),
-  ADD KEY `fk_instrumento` (`fk_instrumento`);
+  ADD KEY `calificacion_ibfk_1` (`fk_usuario`),
+  ADD KEY `calificacion_ibfk_2` (`fk_instrumento`);
+
+--
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id_carrito`),
+  ADD KEY `fk_carrito_usuario` (`fk_usuario`);
 
 --
 -- Indices de la tabla `categoria`
@@ -191,6 +214,14 @@ ALTER TABLE `categoria`
 ALTER TABLE `instrumento`
   ADD PRIMARY KEY (`id_instrumento`),
   ADD KEY `codigoCategoria` (`fk_categoria`);
+
+--
+-- Indices de la tabla `producto_carrito`
+--
+ALTER TABLE `producto_carrito`
+  ADD PRIMARY KEY (`id_producto_carrito`),
+  ADD KEY `fk_producto_carrito_carrito1` (`carrito_id_carrito`),
+  ADD KEY `fk_producto_carrito_instrumento1` (`fk_instrumento`);
 
 --
 -- Indices de la tabla `tipo`
@@ -250,6 +281,12 @@ ALTER TABLE `calificacion`
   ADD CONSTRAINT `calificacion_ibfk_2` FOREIGN KEY (`fk_instrumento`) REFERENCES `instrumento` (`id_instrumento`);
 
 --
+-- Filtros para la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD CONSTRAINT `fk_carrito_usuario` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `categoria`
 --
 ALTER TABLE `categoria`
@@ -260,6 +297,13 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `instrumento`
   ADD CONSTRAINT `codigoCategoria` FOREIGN KEY (`fk_categoria`) REFERENCES `categoria` (`id_categoria`);
+
+--
+-- Filtros para la tabla `producto_carrito`
+--
+ALTER TABLE `producto_carrito`
+  ADD CONSTRAINT `fk_producto_carrito_carrito1` FOREIGN KEY (`carrito_id_carrito`) REFERENCES `carrito` (`id_carrito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_producto_carrito_instrumento1` FOREIGN KEY (`fk_instrumento`) REFERENCES `instrumento` (`id_instrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

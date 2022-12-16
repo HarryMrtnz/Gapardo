@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-12-2022 a las 16:52:51
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 16-12-2022 a las 23:39:00
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,14 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `calificacion`
+--
+
+CREATE TABLE `calificacion` (
+  `id_calificacion` int(100) NOT NULL,
+  `comentario` varchar(100) NOT NULL,
+  `puntuacion` int(11) NOT NULL,
+  `fecha` date DEFAULT NULL,
+  `fk_usuario` int(100) NOT NULL,
+  `fk_instrumento` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id_carrito` int(11) NOT NULL,
+  `total` double DEFAULT NULL,
+  `fk_usuario` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
   `id_categoria` int(100) NOT NULL,
-  `nombre_categoria` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_categoria` varchar(100) NOT NULL,
   `fk_tipo` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -64,7 +91,7 @@ CREATE TABLE `instrumento` (
   `cantidad` int(100) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `fk_categoria` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `instrumento`
@@ -88,9 +115,22 @@ INSERT INTO `instrumento` (`id_instrumento`, `nombre_instrumento`, `marca`, `des
 (15, 'Flauta traversa JBFL-6248S', 'Knight ', 'Material: Metal\r\nNivel de habilidad: Profesional\r\nTipo de digitación: Alemana\r\nIncluye estuche: Sí\r\n', 'Afinación en C\r\nMaterial: Metal\r\nFlauta de plata\r\nSuperficie Plateado\r\nClave de diseño: 16 hoyos cerrado\r\nTecla de disposición: desalineado G, el tornillo de ajuste\r\nAlmohadillas Italia\r\nNivel de habilidad: Profesional\r\nIncluye estuche\r\nDimensiones: 13 x 8 x 41cm\r\nPeso: 0.9 k\r\nOrigen: China\r\n', 45400.00, 75, 'Flauta traversa JBFL-6248S.jpg', 4),
 (16, 'Saxo alto JBAS-200', 'Knight ', 'Eb Llave F# Laqueado + estuche', 'Excelente Saxo Alto en Eb (Mi Bemol) y llave de F#, cuerpo dorado laqueado, incluye estuche semi rígido y boquilla.', 125300.00, 30, 'Saxo alto JBAS-200.jpg', 5),
 (17, 'Saxo soprano SS650', 'Conn-Selmer', 'nstrumento ideal principiantes\r\nLos saxofones Conn-Selmer son una opción ideal para jóvenes y estudiantes músicos. El tamaño de la soprano es cómodo, ligero y fácil de alcanzar, lo que le permite centrarse en su música.\r\n', 'Cuerpo: Latón\r\nLlaves: Latón\r\nTamaño: Soprano\r\nMástil: Recto\r\nBotones: Blanco perlado\r\nClave: F #\r\nPads: Pisoni\r\nAcabado: Laca del oro\r\nAccesorios incluidos: Maletín ligero\r\n', 180000.00, 40, 'Saxo soprano SS650.jpg', 5),
-(18, 'Saxo plástico Venova', 'Yamaha ', 'El Venova es un tipo completamente nuevo de instrumento que ofrece la expresividad de un instrumento de viento, que utiliza un sistema de digitación tan simple como el de una flauta dulce.', 'Tipo de saxofón	Soprano', 27200.00, 65, 'Saxo plástico Venova.jpg', 5),
+(18, 'Saxo plástico Venova', 'Yamaha ', 'El Venova es un tipo completamente nuevo de instrumento que ofrece la expresividad de un instrumento de viento, que utiliza un sistema de digitación tan simple como el de una flauta dulce.', 'Tipo de saxofón Soprano', 27200.00, 65, 'Saxo plástico Venova.jpg', 5),
 (19, 'Armónica diatónica cromada', 'Magma', 'Armónica Blusera Afina Do + Estuche', 'Medidas: 103x27x21 mm.\r\nPlaca de caña de cobre de 0,9 mm.\r\nCubierta de metal, cromada, gran terminación\r\n', 1300.00, 180, 'Armónica diatónica cromada.jpg', 6),
 (20, 'Armónica cromática 64', 'Hohner', 'Con el nuevo Super 64, HOHNER actualiza este icónico instrumento con un diseño impresionante y una amplia gama de características innovadoras. ', 'Teclas: C\r\nEscribe: cromático\r\nAfinación: afinación en solitario\r\nNumero de agujeros: dieciséis\r\nGama tonal: 4 octavas, C3 - D7\r\nLargo: 19,8 cm / 7,8 \"\r\n', 82300.00, 130, 'Armónica cromática 64 Hohner.jpg', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto_carrito`
+--
+
+CREATE TABLE `producto_carrito` (
+  `id_producto_carrito` int(11) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `carrito_id_carrito` int(11) NOT NULL,
+  `fk_instrumento` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -101,7 +141,7 @@ INSERT INTO `instrumento` (`id_instrumento`, `nombre_instrumento`, `marca`, `des
 CREATE TABLE `tipo` (
   `id_tipo` int(10) NOT NULL,
   `nombre_tipo` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo`
@@ -120,19 +160,46 @@ INSERT INTO `tipo` (`id_tipo`, `nombre_tipo`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `id_usuario` int(8) UNSIGNED NOT NULL,
+  `id_usuario` int(8) NOT NULL,
   `nombre_usuario` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `clave` varchar(100) DEFAULT NULL,
   `nivel` varchar(100) DEFAULT NULL,
-  `fecha_alta` datetime DEFAULT NULL,
+  `fecha_alta` date DEFAULT NULL,
   `estado` enum('activo','banneado') NOT NULL DEFAULT 'activo'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido`, `email`, `clave`, `nivel`, `fecha_alta`, `estado`) VALUES
+(1, 'Harry', 'Mrtnz', 'hm@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(2, 'Luca', 'Di Nardo', 'luca@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(3, 'Damian', 'Reyes', 'Dami@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(4, 'Dibu', 'Martínez', 'Dibu@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(5, 'Lionel', 'Messi', 'Lio@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
+(6, 'Elda', 'Montoto', 'Elda@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `calificacion`
+--
+ALTER TABLE `calificacion`
+  ADD PRIMARY KEY (`id_calificacion`),
+  ADD KEY `calificacion_ibfk_1` (`fk_usuario`),
+  ADD KEY `calificacion_ibfk_2` (`fk_instrumento`);
+
+--
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id_carrito`),
+  ADD KEY `fk_carrito_usuario` (`fk_usuario`);
 
 --
 -- Indices de la tabla `categoria`
@@ -149,6 +216,14 @@ ALTER TABLE `instrumento`
   ADD KEY `codigoCategoria` (`fk_categoria`);
 
 --
+-- Indices de la tabla `producto_carrito`
+--
+ALTER TABLE `producto_carrito`
+  ADD PRIMARY KEY (`id_producto_carrito`),
+  ADD KEY `fk_producto_carrito_carrito1` (`carrito_id_carrito`),
+  ADD KEY `fk_producto_carrito_instrumento1` (`fk_instrumento`);
+
+--
 -- Indices de la tabla `tipo`
 --
 ALTER TABLE `tipo`
@@ -158,12 +233,17 @@ ALTER TABLE `tipo`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `sdfsdfsdfdsfdsf` (`email`) USING BTREE;
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `calificacion`
+--
+ALTER TABLE `calificacion`
+  MODIFY `id_calificacion` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -187,11 +267,24 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `calificacion`
+--
+ALTER TABLE `calificacion`
+  ADD CONSTRAINT `calificacion_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `calificacion_ibfk_2` FOREIGN KEY (`fk_instrumento`) REFERENCES `instrumento` (`id_instrumento`);
+
+--
+-- Filtros para la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD CONSTRAINT `fk_carrito_usuario` FOREIGN KEY (`fk_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `categoria`
@@ -204,6 +297,13 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `instrumento`
   ADD CONSTRAINT `codigoCategoria` FOREIGN KEY (`fk_categoria`) REFERENCES `categoria` (`id_categoria`);
+
+--
+-- Filtros para la tabla `producto_carrito`
+--
+ALTER TABLE `producto_carrito`
+  ADD CONSTRAINT `fk_producto_carrito_carrito1` FOREIGN KEY (`carrito_id_carrito`) REFERENCES `carrito` (`id_carrito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_producto_carrito_instrumento1` FOREIGN KEY (`fk_instrumento`) REFERENCES `instrumento` (`id_instrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
