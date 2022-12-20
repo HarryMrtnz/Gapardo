@@ -21,14 +21,14 @@
 
         public function registrar(){
             $this->setQuery("INSERT INTO usuario (nombre_usuario, apellido, email, clave, nivel, fecha_alta)
-                            VALUES(:nombre_usuario, :apellido, :email, :clave, :nivel, :fecha_alta)");
+                            VALUES(:nombre_usuario, :apellido, :email, :clave, :nivel, NOW( ))");
             $this->ejecutar(array(
                 ':nombre_usuario' => $this->nombreUsuario,
                 ':apellido' => $this->apellido,
                 ':email' => $this->email,
                 ':clave' => $this->clave,
                 ':nivel' => $this->nivel,
-                ':fecha_alta' => $this->fecha
+                //':fecha_alta' => $this->fecha
             ));            
         }
 

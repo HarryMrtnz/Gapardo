@@ -1,33 +1,75 @@
 <main id="carrito">
     <div class="carrito">
+		<h3>CARRITO DE COMPRAS</h3>
 			<?php
-/* 				foreach ($verCarrrito as $carrito) {
-					$idCalificacion = $calificacion ['id_calificacion']; */
+				foreach ($verCarrito as $carrito) {
+					$nombre = $carrito['nombre_instrumento'];
+					$foto = $carrito['foto'];
+					$precio = $carrito['precio'];
+					$cantidad = $carrito['cantidad'];
+					$marca = $carrito['marca'];
+					//$subtotal = $carrito ['subtotal'];
+					//$total = $carrito ['total'];
+					$subtotal = $precio * $cantidad;
+					$total = $total + $subtotal;
 
-					
 					echo "
 						<div>
 							<table class='tabla-carrito'>
 								<tr>
-                                    <td> 'nombre_instrumento'</td>
-                                    <td> Precio: $'precio'</td>
-									<td> x'cantidad'</td>
-									<td> Total: $'total'</td>
-                                    <td> <a href='carrito/eliminar/idInstrumento>
-                                        <img src='' alt='eliminar_producto'></a></td>
+									<td class='foto'> <img src='public/fotitos/$foto' alt='$nombre'></td>
+                                    <td class='nombre'> $nombre</td>
+									<td class='marca'> $marca</td>
+                                    <td class='precio'> $$precio</td>
+									<td class='cant'>
+
+										<form action='carrito/cambiarCantidad'  method='post' name ='cant'>
+											
+											<select class = 'form-control' name = ''>
+						
+												<option value='1'>x 1</option>
+												<option value='2'>x 2</option>
+												<option value='3'>x 3</option>
+												<option value='4'>x 4</option>
+												<option value='5'>x 5</option>
+												<option value='6'>x 6</option>
+												<option value='7'>x 7</option>
+												<option value='8'>x 8</option>
+												<option value='9'>x 9</option>
+												<option value='10'x>1 0</option>
+
+											</select>
+						
+											<input type='submit' value='cambiar' onclick='valida_envia()'>
+						
+										</form>
+									</td>
+									<td class='subtotal'>$$subtotal</td>
+                                    <td class='del'> <a href='carrito/eliminar/idInstrumento'>
+                                        <img src='public/img/carrito_menos.png' alt='eliminar_producto'></a></td>
 										
 								</tr>
+
 							</table>
 
-							<td> <a href='carrito/eliminar/todo'>
-							<img src='faltaimagen' alt=''>VACIAR CARRITO!</a></td>
-
-							<td> <a href=https://www.mercadopago.com.ar/>
-							<img src='faltaimagen' alt=''>COMPRAR!</a></td>
 						</div>
-					";
-				//}		
-			?>
+						";
+					}		
+					echo"<hr>
+
+					<h4>TOTAL: $$total</h4>";
+				?>
+			<div class="btns">
+				<a href="producto">← VOLVER</a>
+				
+				<a href='https://www.mercadopago.com.ar'>COMPRAR
+					<img src='public/img/pagar.png' alt='pagar'></a>
+
+				<a href='carrito/vaciar'>VACIAR CARRITO
+				<img src='public/img/delete.png' alt='delete'></a>
+
+
+			</div>
 		</div>
 
 </main>

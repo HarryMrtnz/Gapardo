@@ -203,7 +203,7 @@ body {
                                 /* PRODUCTOS */
 #productos {
     width: 90%;
-    display: grid;
+/*     display: grid; */
     margin: auto;
 }
 
@@ -211,10 +211,9 @@ body {
     padding-top: 30px;
     display: grid;
     grid-template-columns: repeat(5, 230px);
-    grid-template-rows: 230px 300px 230px;
+ /*    grid-template-rows: 230px 300px 230px; */
     grid-gap: 20px;
     justify-content: center;
-    min-height: 2000px;
 
 }
 
@@ -297,6 +296,17 @@ body {
     transform: scale(1.05);
 }
 
+[alt="carrito"] {
+    width: 30px;
+    padding-right: 10px;
+    filter: invert(100%) 
+        sepia(12%) 
+        saturate(0%) 
+        hue-rotate(354deg) 
+        brightness(102%) 
+        contrast(103%);
+}
+
 
 .prods .items {
     height: 300px;
@@ -325,7 +335,7 @@ body {
     color:black;
 }
 
-.precio {
+.prods .precio {
     color: red;
     margin: auto;
     display: flex;
@@ -404,17 +414,46 @@ body {
 }
 .ficha h5 {
     color: orangered;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .ficha p {
     color: gray;
 }
 
-.ficha h5 b {
+.addCarrito {
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addCarrito a {
+    background-color: lightgrey;
+    color: black;
+    padding: 15px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addCarrito img {
+    padding-left: 10px;
+    height: 35px;
+}
+
+.addCarrito a:hover {
+    color:orangered;
+    border-color: orangered; 
+}
+
+.ficha h4 b {
     color: slategray;
-    font-size: 20px;
-    text-align: start;
+    font-size: 40px;
 }
 
 .calificacion {
@@ -523,6 +562,140 @@ body {
 .tabla-calif img {
     width: 30px;
 }
+                                /* CARRITO */
+
+#carrito{
+    width: 60%;
+    margin: auto    ;
+}
+
+.carrito div{
+    width: 100%;
+    padding: 10px;
+    margin: auto;
+}
+
+.carrito h3{
+    padding: 20px;
+    text-align: center;
+}
+
+.tabla-carrito .foto{
+    text-align: center;
+    padding-left: 20px;
+    width: 15px;
+}
+
+.tabla-carrito .nombre{
+    padding-left: 20px;
+    width: 200px;
+}
+
+.tabla-carrito .marca{
+    padding-left: 5px;
+    width: 100px;
+}
+
+.tabla-carrito .precio{
+    color: black;
+    text-align: end;
+    padding-right: 5px;
+    width: 80px;
+}
+
+.tabla-carrito .cant {
+    width: 50px;
+}
+
+.tabla-carrito .subtotal {
+    color: orangered;
+    padding-left: 10px;
+    width: 150px;
+}
+
+.tabla-carrito .del {
+    text-align: end;
+    padding-right: 20px;
+}
+
+[alt='eliminar_producto']{
+    width: 30px;
+}
+
+.tabla-carrito {
+    color: black;
+    background-color:white;
+    border-radius: 10px;
+    border: 1px solid orange;
+    width: 70%;
+    margin: auto;
+}
+
+.tabla-carrito img{
+    max-height: 100px;
+    max-width: 50px;
+}
+
+.carrito h4{
+    margin: auto;
+    margin-top: 10px;
+    width: 15%;
+    border: 1px black solid;
+    border-radius: 10px;
+    background-color: rgb(49, 45, 45, 60%);
+    color: yellow;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.carrito .btns {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito .btns a{
+    background-color: rgb(154, 146, 146, 50%);
+    border-radius: 10px;
+    border: 1px yellow solid;
+    padding: 5px;
+    text-decoration: none;
+    color:aliceblue;
+    display: flex;
+    align-items: center ;
+
+}
+
+.carrito .btns a:hover {
+    color: orange;
+    border: 1px orangered solid;
+}
+
+[alt='delete']{
+    width: 20px;
+    filter: invert(100%) 
+    sepia(12%) 
+    saturate(0%) 
+    hue-rotate(354deg) 
+    brightness(102%) 
+    contrast(103%);
+    padding-left: 5px;
+}
+
+[alt='pagar']{
+    width: 25px;
+    filter: invert(100%) 
+    sepia(12%) 
+    saturate(0%) 
+    hue-rotate(354deg) 
+    brightness(102%) 
+    contrast(103%);
+    padding-left: 5px;
+}
+
+
 
                                 /* CONTACTO */
 #contacto {
@@ -1032,6 +1205,7 @@ body {
 }
 
 .salir a {
+    background-color: rgb(40, 38, 38, 40%);
     text-decoration: none;
     font-size: 12px;
     margin: 10px;

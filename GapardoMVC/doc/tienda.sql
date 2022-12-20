@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2022 a las 23:39:00
+-- Tiempo de generación: 20-12-2022 a las 22:45:16
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -36,6 +36,25 @@ CREATE TABLE `calificacion` (
   `fk_instrumento` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `calificacion`
+--
+
+INSERT INTO `calificacion` (`id_calificacion`, `comentario`, `puntuacion`, `fecha`, `fk_usuario`, `fk_instrumento`) VALUES
+(1, 'Muy buena Guitarra!!', 5, '2022-11-22', 1, 1),
+(2, '¿Aceptan efectivo? me robaron la tarjeta de crédito! :(', 3, '2022-12-02', 6, 1),
+(3, 'Mira que te como hermano!', 4, '2022-12-08', 4, 1),
+(4, 'Quemirá bobo? Andapayá!', 5, '2022-12-15', 5, 1),
+(5, 'La compre hace 3 días, suena barbaro!', 5, '2022-12-08', 2, 9),
+(6, 'Buenisimo!', 3, '2022-12-04', 7, 9),
+(7, 'No me termina de convencer', 2, '2022-11-17', 3, 2),
+(8, 'Buena calidad!!! :D', 4, '2022-11-24', 2, 2),
+(9, 'Barbaro!', 3, '2022-11-10', 6, 4),
+(10, 'Precio y calidad! Muy Bueno', 3, '2022-12-05', 3, 3),
+(11, 'AAAAAAAA', 2, '2022-12-02', 4, 6),
+(12, 'No suena como esperaba, igual bien', 3, '2022-12-06', 1, 7),
+(13, 'Cuanto es en Dolares?', 4, '2022-12-09', 6, 12);
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +66,15 @@ CREATE TABLE `carrito` (
   `total` double DEFAULT NULL,
   `fk_usuario` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id_carrito`, `total`, `fk_usuario`) VALUES
+(1, NULL, 1),
+(2, NULL, 2),
+(3, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -128,9 +156,20 @@ INSERT INTO `instrumento` (`id_instrumento`, `nombre_instrumento`, `marca`, `des
 CREATE TABLE `producto_carrito` (
   `id_producto_carrito` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `carrito_id_carrito` int(11) NOT NULL,
+  `fk_carrito` int(11) NOT NULL,
   `fk_instrumento` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `producto_carrito`
+--
+
+INSERT INTO `producto_carrito` (`id_producto_carrito`, `cantidad`, `fk_carrito`, `fk_instrumento`) VALUES
+(1, 1, 1, 1),
+(2, 1, 1, 19),
+(3, 1, 2, 9),
+(4, 1, 2, 12),
+(5, 1, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -175,12 +214,14 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido`, `email`, `clave`, `nivel`, `fecha_alta`, `estado`) VALUES
-(1, 'Harry', 'Mrtnz', 'hm@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
-(2, 'Luca', 'Di Nardo', 'luca@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
-(3, 'Damian', 'Reyes', 'Dami@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
-(4, 'Dibu', 'Martínez', 'Dibu@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
-(5, 'Lionel', 'Messi', 'Lio@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo'),
-(6, 'Elda', 'Montoto', 'Elda@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', NULL, 'activo');
+(1, 'Harry', 'Mrtnz', 'hm@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'admin', '2022-07-22', 'activo'),
+(2, 'Luca', 'Di Nardo', 'luca@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-09-14', 'activo'),
+(3, 'Damian', 'Reyes', 'dami@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-09-30', 'activo'),
+(4, 'Dibu', 'Martínez', 'dibu@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-10-10', 'activo'),
+(5, 'Lionel', 'Messi', 'lio@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-10-29', 'activo'),
+(6, 'Elda', 'Montoto', 'elda@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-11-18', 'activo'),
+(7, 'Bruno', 'Díaz', 'batman@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-11-25', 'activo'),
+(8, 'Chapulin', 'Colorado', 'chapu@dv.net', 'f10e2821bbbea527ea02200352313bc059445190', 'usuario', '2022-12-20', 'activo');
 
 --
 -- Índices para tablas volcadas
@@ -220,7 +261,7 @@ ALTER TABLE `instrumento`
 --
 ALTER TABLE `producto_carrito`
   ADD PRIMARY KEY (`id_producto_carrito`),
-  ADD KEY `fk_producto_carrito_carrito1` (`carrito_id_carrito`),
+  ADD KEY `fk_producto_carrito_carrito1` (`fk_carrito`),
   ADD KEY `fk_producto_carrito_instrumento1` (`fk_instrumento`);
 
 --
@@ -243,7 +284,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `id_calificacion` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_calificacion` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -258,6 +305,12 @@ ALTER TABLE `instrumento`
   MODIFY `id_instrumento` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT de la tabla `producto_carrito`
+--
+ALTER TABLE `producto_carrito`
+  MODIFY `id_producto_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo`
 --
 ALTER TABLE `tipo`
@@ -267,7 +320,7 @@ ALTER TABLE `tipo`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -302,7 +355,7 @@ ALTER TABLE `instrumento`
 -- Filtros para la tabla `producto_carrito`
 --
 ALTER TABLE `producto_carrito`
-  ADD CONSTRAINT `fk_producto_carrito_carrito1` FOREIGN KEY (`carrito_id_carrito`) REFERENCES `carrito` (`id_carrito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_producto_carrito_carrito1` FOREIGN KEY (`fk_carrito`) REFERENCES `carrito` (`id_carrito`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_producto_carrito_instrumento1` FOREIGN KEY (`fk_instrumento`) REFERENCES `instrumento` (`id_instrumento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 

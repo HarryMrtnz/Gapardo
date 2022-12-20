@@ -2,6 +2,7 @@
 
     require_once('models/categoriaModel.php');
     require_once('models/productoModel.php');
+    require_once('models/carritoModel.php');
 
     class ProductoController{
         public $nombre;
@@ -47,25 +48,36 @@
         }
 
         public function calificar(){
-/*             session_start();
-             if( isset( $_SESSION['email'] )){
-                return; */
+            session_start();
 
-            $puntuacion = $_POST['puntuacion'];
-            $comentario = $_POST['comentario'];
+            if(  isset( $_SESSION['email'] ) && isset( $_POST['puntuacion'] ) && isset( $_POST['comentario']) ){
 
-            $producto = new productoModel();
-            $producto->puntuacion = $puntuacion;
-            $producto->comentario = $comentario;
-            $producto->idUsuario = $idUsuario;
-            $producto->fecha = 'NOW( )';
+                $puntuacion = $_POST['puntuacion'];
+                $comentario = $_POST['comentario'];
+                $idInstrumento = $_GET['id'];
 
-            $producto->calificar();
-            echo "calificacion añadida";
+                $producto = new productoModel();
+                $producto->puntuacion = $puntuacion;
+                $producto->comentario = $comentario;
+                $producto->fkUsuario = $idUsuario;
+                $producto->fkInstrumento = $idInstrumento;
+                $producto->fecha = 'NOW( )';
 
-            //header('Location: ../producto/detalle?id=$fkInstrumento');
+                $producto->calificar();
+                echo "calificacion añadida";
+
+                //header('Location: ../producto/detalle?id=$fkInstrumento');
+            }else{
+                echo "
+                <script lenguage='javascript'>
+                    alert('¡Debes iniciar sesión!');
+                    window.location.replace('../producto#productos');
+                </script>
+            ";
+            }
         
         }
+
 
     }
 

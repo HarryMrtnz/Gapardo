@@ -39,4 +39,6 @@
                         ':idTipo' => $this->idTipo,
         ));               
     }
+
+    
 ?>

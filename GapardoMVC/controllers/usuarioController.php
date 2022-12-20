@@ -149,8 +149,7 @@
                 ";
             }
         }
-
-        
+     
         public function cambiar_constraseña($parametros = array()){
             session_start();
             if( isset( $_POST['email'] ) && isset( $_POST['clave']) ){

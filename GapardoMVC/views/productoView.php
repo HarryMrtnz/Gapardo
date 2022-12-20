@@ -35,7 +35,6 @@
                                             <a href='producto?categoria=$idCategoria#productos'>$nombreCategoria</a>
                                         </li>";
                                 }
-
                             ?>
 
                         </ul>
@@ -45,8 +44,8 @@
 
                         <li>
                             <a href="carrito">
-                                <img src="public/img/carrito" alt="">MI CARRITO
-                                
+                                <img src="public/img/carrito.png" alt="carrito">MI CARRITO
+                                <?php echo ""?>
                             </a>
                         </li>
 

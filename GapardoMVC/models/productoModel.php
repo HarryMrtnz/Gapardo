@@ -47,22 +47,22 @@
         }
 
         public function calificar (){
-            $this->setQuery("INSERT INTO calificacion (puntuacion, comentario, fk_usuario)
-                            VALUES(:puntuacion, :comentario, :fk_usuario)");
+            $this->setQuery("INSERT INTO calificacion(comentario, puntuacion, fecha, fk_usuario, fk_instrumento )
+            VALUES (:comentario, :puntuacion, NOW( ), :idUsuario, :idUnstrumento)");
 
             $this->ejecutar(array(
-                ':nombre_usuario' => $this->nombreUsuario,
-                ':puntuacion' => $this->puntuacion,
                 ':comentario' => $this->comentario,
-                ':fk_usuario' => $this->idUsuario,
-                ':fecha' => $this->fecha
-                
+                ':puntuacion' => $this->puntuacion,
+                //':fecha' => $this->fecha,
+                ':idUsuario' => $this->idUsuario,
+                ':idInstrumento' => $this->idInstrumento,
+
             ));   
 
         }
 
         public function verCalificacion ($id){
-            $this->setQuery("SELECT nombre_usuario, puntuacion, comentario 
+            $this->setQuery("SELECT nombre_usuario, puntuacion, comentario, fecha
                             FROM calificacion
                             INNER JOIN instrumento ON id_instrumento = fk_instrumento
                             INNER JOIN usuario ON id_usuario = fk_usuario

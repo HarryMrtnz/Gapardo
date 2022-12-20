@@ -18,15 +18,22 @@
 						<div class='fichaimg'> <img src='../public/fotitos/$foto' alt='$nombreInstrumento'></div>
 							<div class='info'><h5>MARCA:</h5>
 								<p>$marca</p>
-							<h5>DESCRIPCIÓN:</h5>
-								<p>$descripcion</p>
-							<h5>DETALLE:</h5> 
-								<p>$detalle</p>
-							<h5>CANTIDAD DISPONIBLE:</h5>
-								<p>$cantidad</p>
-							<h5>PRECIO CONTADO:</h5>
-								<h5><b>$$precio</b></h5>		
-						</div>
+								<h5>DESCRIPCIÓN:</h5>
+									<p>$descripcion</p>
+								<h5>DETALLE:</h5> 
+									<p>$detalle</p>
+								<h5>CANTIDAD DISPONIBLE:</h5>
+									<p>$cantidad</p>
+
+									<h5>PRECIO CONTADO:</h5>
+								<div class='addCarrito'>
+									<h4><b>$$precio</b></h4>
+
+									<a href='../carrito/guardar'>AGREGAR<br>AL CARRITO
+									<img src='../public/img/carrito_mas.png' alt='carrito_mas'></a>
+								</div>
+							</div>
+
 					";
 				}
 			?>
@@ -61,7 +68,7 @@
 					$nombreUsuario = $calificacion ['nombre_usuario'];
 					$puntuacion = $calificacion ['puntuacion'];
 					$comentario = $calificacion ['comentario'];
-					//$fecha = $calificacion ['fecha'];
+					$fecha = $calificacion ['fecha'];
 					
 					echo "
 						<div>
@@ -70,7 +77,7 @@
 									<td class='nombre'><img src='../public/img/logo_perfil.png' alt='usuario'> $nombreUsuario</td>
 									<td class='estrella'>$puntuacion ★</td>
 									<td class='comentario'>$comentario</td>
-									<td>fecha_comentario</td>
+									<td>$fecha</td>
 								</tr>
 							</table>
 						</div>
