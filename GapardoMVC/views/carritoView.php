@@ -2,14 +2,17 @@
     <div class="carrito">
 		<h3>CARRITO DE COMPRAS</h3>
 			<?php
+				$total = 0;
+				$cantidad = 0;
+				
 				foreach ($verCarrito as $carrito) {
+					$idInstrumento = $carrito ['id_instrumento'];
 					$nombre = $carrito['nombre_instrumento'];
 					$foto = $carrito['foto'];
 					$precio = $carrito['precio'];
-					$cantidad = $carrito['cantidad'];
 					$marca = $carrito['marca'];
-					//$subtotal = $carrito ['subtotal'];
-					//$total = $carrito ['total'];
+					
+					$cantidad = 1;
 					$subtotal = $precio * $cantidad;
 					$total = $total + $subtotal;
 
@@ -23,9 +26,9 @@
                                     <td class='precio'> $$precio</td>
 									<td class='cant'>
 
-										<form action='carrito/cambiarCantidad'  method='post' name ='cant'>
+										<form method='post' name='cant'>
 											
-											<select class = 'form-control' name = ''>
+											<select class='form-control' name='cant'>
 						
 												<option value='1'>x 1</option>
 												<option value='2'>x 2</option>
@@ -36,16 +39,16 @@
 												<option value='7'>x 7</option>
 												<option value='8'>x 8</option>
 												<option value='9'>x 9</option>
-												<option value='10'x>1 0</option>
+												<option value='10'>x 10</option>
 
 											</select>
 						
-											<input type='submit' value='cambiar' onclick='valida_envia()'>
+											<input type='submit' value='cambiar'>
 						
 										</form>
 									</td>
 									<td class='subtotal'>$$subtotal</td>
-                                    <td class='del'> <a href='carrito/eliminar/idInstrumento'>
+                                    <td class='del'> <a href='carrito/eliminar?id=$idInstrumento'>
                                         <img src='public/img/carrito_menos.png' alt='eliminar_producto'></a></td>
 										
 								</tr>
@@ -55,9 +58,15 @@
 						</div>
 						";
 					}		
-					echo"<hr>
 
-					<h4>TOTAL: $$total</h4>";
+
+					if ($cantidad == 0) {
+						echo "<h4>No tienes productos<br>en tu carrito</h4>";
+					}else{
+
+					echo "<hr> <h4>TOTAL: $$total</h4>";
+					}
+
 				?>
 			<div class="btns">
 				<a href="producto">← VOLVER</a>

@@ -571,7 +571,7 @@ body {
 
 .carrito div{
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     margin: auto;
 }
 
@@ -648,6 +648,7 @@ body {
 
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .carrito .btns {
@@ -657,7 +658,7 @@ body {
 }
 
 .carrito .btns a{
-    background-color: rgb(154, 146, 146, 50%);
+    background-color: rgba(20, 19, 19, 50%);
     border-radius: 10px;
     border: 1px yellow solid;
     padding: 5px;

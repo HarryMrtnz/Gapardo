@@ -15,24 +15,28 @@
 
 					echo" 
 						<h3>$nombreInstrumento</h3>
-						<div class='fichaimg'> <img src='../public/fotitos/$foto' alt='$nombreInstrumento'></div>
-							<div class='info'><h5>MARCA:</h5>
-								<p>$marca</p>
-								<h5>DESCRIPCIÓN:</h5>
-									<p>$descripcion</p>
-								<h5>DETALLE:</h5> 
-									<p>$detalle</p>
-								<h5>CANTIDAD DISPONIBLE:</h5>
-									<p>$cantidad</p>
+						<div class='fichaimg'> 
+							<img src='../public/fotitos/$foto' alt='$nombreInstrumento'>
+						</div>
 
-									<h5>PRECIO CONTADO:</h5>
-								<div class='addCarrito'>
-									<h4><b>$$precio</b></h4>
+						<div class='info'><h5>MARCA:</h5>
+							<p>$marca</p>
+							<h5>DESCRIPCIÓN:</h5>
+								<p>$descripcion</p>
+							<h5>DETALLE:</h5> 
+								<p>$detalle</p>
+							<h5>CANTIDAD DISPONIBLE:</h5>
+								<p>$cantidad</p>
 
-									<a href='../carrito/guardar'>AGREGAR<br>AL CARRITO
-									<img src='../public/img/carrito_mas.png' alt='carrito_mas'></a>
-								</div>
+								<h5>PRECIO CONTADO:</h5>
+
+							<div class='addCarrito'>
+								<h4><b>$$precio</b></h4>
+
+								<a href='../carrito/guardar?id=$idInstrumento'>AGREGAR<br>AL CARRITO
+								<img src='../public/img/carrito_mas.png' alt='carrito_mas'></a>
 							</div>
+						</div>
 
 					";
 				}
@@ -42,7 +46,7 @@
 
 		<div class="calificacion">
 			<p>DEJANOS TU OPINION SOBRE EL PRODUCTO:</p>
-			<form class="calificar" method="post" action="calificar" name="calificar">
+			<form class="calificar" method="post" action="calificar?id=<?php echo $idInstrumento ?>" name="calificar">
                 <div class="puntuacion"> 
 					<input id="radio1" type="radio" name="puntuacion" value="5">
 						<label for="radio1">★</label>
@@ -55,7 +59,7 @@
 					<input id="radio5" type="radio" name="puntuacion" value="1">
 						<label for="radio5">★</label>
 				</div>
-                <div><input class="form-control" type="text" placeholder="Iniciá sesión para comentar acá, ¿Dale?:" name="comentario" required/></div>
+                <div><input class="form-control" type="text" placeholder="Debes iniciar sesión para comentar:" name="comentario" required/></div>
                 <div><input type="submit" id="boton4" value="Enviar" onclick="valida_envia()"></div>
             </form>
 
@@ -64,7 +68,6 @@
 		<div class="comentarios">
 			<?php
 				foreach ($verCalificacion as $calificacion) {
-					//$idCalificacion = $calificacion ['id_calificacion'];
 					$nombreUsuario = $calificacion ['nombre_usuario'];
 					$puntuacion = $calificacion ['puntuacion'];
 					$comentario = $calificacion ['comentario'];

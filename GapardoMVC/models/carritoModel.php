@@ -2,52 +2,67 @@
     require_once 'core/ConexionPDO.php';
 
     class CarritoModel extends ConexionDB {
-        public $email;
-        public $fkCarrito;
-        public $fkInstrumento;
-    
+        //public $email;
+        public $idCarrito;
+        public $idInstrumento;
+        public $idUsuario;
 
         public function guardar(){
-            $this->setQuery("INSERT INTO producto_carrito (cantidad, subtotal, fk_instrumento, fk_carrito)
-                            VALUES(1, :subtotal, :idInstrumento, :idCarrito)");
+
+            $this->setQuery("INSERT INTO producto_carrito (fk_carrito, fk_instrumento)
+                            VALUES (:idCarrito, :idInstrumento)");
             $this->ejecutar(array(
-                ':subtotal' => $this->subtotal,
-                ':idInstrumento' => $this->fkInstrumento,
-                ':idCarrito' => $this->fkCarrito
-            ));            
+                ':idCarrito' => $this->idCarrito,
+                ':idInstrumento' => $this->idInstrumento
+            ));
+        }
+
+        public function eliminar(){
+            $this->setQuery("DELETE FROM producto_carrito
+                            WHERE fk_instrumento = :idInstrumento AND fk_carrito = :idCarrito");
+            $this->ejecutar(array(
+                ':idInstrumento' => $this->idInstrumento,
+                ':idCarrito' => $this->idCarrito
+            ));
         }
 
         public function vaciar(){
             $this->setQuery("DELETE FROM producto_carrito
-                            WHERE fk_carrito = :fk_carrito");
+                            WHERE fk_carrito = :idCarrito");
             $this->ejecutar(array(
-                ':fk_carrito' => $this->fk_carrito
+                ':idCarrito' => $this->idCarrito
             ));
         }
 
         public function verCarrito($email){
-            $this->setQuery("SELECT i.foto, i.nombre_instrumento, i.marca, i.precio, pc.cantidad
+            $this->setQuery("SELECT i.id_instrumento, i.foto, i.nombre_instrumento, i.marca, i.precio
                             FROM producto_carrito pc
                             INNER JOIN instrumento i ON i.id_instrumento = pc.fk_instrumento
                             INNER JOIN carrito c ON c.id_carrito = pc.fk_carrito
                             INNER JOIN usuario u ON u.id_usuario = c.fk_usuario
                             WHERE email = '$email'; ");
 
-            $resultado = $this->obtenerRow(array(
-                //':fk_carrito' => $this->fk_carrito,
-            ));
+            $resultado = $this->obtenerRow(array( ));
             return $resultado; 
         }
 
-        public function cambiarCantidad($cantidad){
+        public function contar(){
+            $this->setQuery("SELECT COUNT(*) AS cantidad
+                            FROM producto_carrito
+                            WHERE fk_carrito = :idCarrito");
+            $this->ejecutar(array(
+                ':idCarrito' => $this->idCarrito
+            ));
+        }
+
+/*         public function cambiarCantidad($cantidad){
             $this->setQuery("UPDATE producto_carrito
                             SET cantidad = :cantidad
                             WHERE fk_instrumento = :fkInstrumento");
             $this->ejecutar(array(
                 ':cantidad' => $this->cantidad
             ));
-        }
-
+        } */
 
     }
 ?>

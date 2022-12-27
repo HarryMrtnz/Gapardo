@@ -12,6 +12,7 @@
         public $cantidad;
         public $foto;
         public $fkCategoria;
+        public $idUsuario;
 
         public function listar(){
             $this->setQuery("SELECT * FROM instrumento");
@@ -48,14 +49,14 @@
 
         public function calificar (){
             $this->setQuery("INSERT INTO calificacion(comentario, puntuacion, fecha, fk_usuario, fk_instrumento )
-            VALUES (:comentario, :puntuacion, NOW( ), :idUsuario, :idUnstrumento)");
+            VALUES (:comentario, :puntuacion, :fecha, :idUsuario, :idInstrumento)");
 
             $this->ejecutar(array(
                 ':comentario' => $this->comentario,
                 ':puntuacion' => $this->puntuacion,
-                //':fecha' => $this->fecha,
+                ':fecha' => $this->fecha,
                 ':idUsuario' => $this->idUsuario,
-                ':idInstrumento' => $this->idInstrumento,
+                ':idInstrumento' => $this->idInstrumento
 
             ));   
 

@@ -12,6 +12,9 @@
             $categoria = new CategoriaModel();
             $lista = $categoria->lista();
 
+            $carrito = new CarritoModel();
+            $contarProductos = $carrito->contar();
+
             if( isset( $_GET['categoria']) ){
                 $categoria = $_GET['categoria'];
 
@@ -50,35 +53,61 @@
         public function calificar(){
             session_start();
 
-            if(  isset( $_SESSION['email'] ) && isset( $_POST['puntuacion'] ) && isset( $_POST['comentario']) ){
+            //print_r ($_SESSION);
 
-                $puntuacion = $_POST['puntuacion'];
-                $comentario = $_POST['comentario'];
-                $idInstrumento = $_GET['id'];
+            if(  isset( $_SESSION['email'] )){
+            
+                if (isset( $_POST['puntuacion'] )){ 
+                
+                    if(isset( $_POST['comentario']) ){
 
-                $producto = new productoModel();
-                $producto->puntuacion = $puntuacion;
-                $producto->comentario = $comentario;
-                $producto->fkUsuario = $idUsuario;
-                $producto->fkInstrumento = $idInstrumento;
-                $producto->fecha = 'NOW( )';
+                        $puntuacion = $_POST['puntuacion'];
+                        $comentario = $_POST['comentario'];
+                        $idInstrumento = $_GET['id'];
+                        $idUsuario = $_SESSION['id_usuario'];
 
-                $producto->calificar();
-                echo "calificacion añadida";
+                        $producto = new productoModel();
+                        $producto->puntuacion = $puntuacion;
+                        $producto->comentario = $comentario;
+                        $producto->idUsuario = $idUsuario;
+                        $producto->idInstrumento = $idInstrumento;
+                        $producto->fecha = date ('Y-m-d');
 
-                //header('Location: ../producto/detalle?id=$fkInstrumento');
-            }else{
+                        $producto->calificar();
+                        //echo "calificacion añadida";
+
+                        header('Location: ../producto/detalle?id='.$idInstrumento);
+
+                    }else{
+                        echo "
+                            <script lenguage='javascript'>
+                            alert('¡Deja tu comentario!');
+                            window.location.replace('../producto#productos');
+                            </script>
+                        ";
+                    }
+                }else{
+                    echo "
+                        <script lenguage='javascript'>
+                        alert('¡Recuerda dejar tu puntuación!');
+                            window.location.replace('../producto#productos');
+                        </script>
+                    ";
+                }
+            }else{     
                 echo "
-                <script lenguage='javascript'>
-                    alert('¡Debes iniciar sesión!');
-                    window.location.replace('../producto#productos');
-                </script>
-            ";
+                    <script lenguage='javascript'>
+                        alert('¡Debes iniciar sesión!');
+                        window.location.replace('../producto#productos');
+                    </script>
+                ";
             }
         
+
         }
 
 
+        
     }
 
 ?>

@@ -4,7 +4,8 @@
 
     class CarritoController{
         public $idCarrito;
-        public $fkUsuario;
+        public $idInstrumento;
+        public $idUsuario;
 
         public function index( $parametros = array() ){
             session_start();
@@ -30,22 +31,35 @@
             }
         }
 
+/*         public function contar(){
+            
+            $carrito = new CarritoModel();
+            $contarProductos = $carrito->contar();
+        } */
+
         public function guardar( $parametros = array() ){
             session_start();
 
-            if (isset ($_SESSION['email'])) {
-                $email = $_SESSION['email'];
+            if (isset ($_SESSION['id_usuario'])) {
+                
+                $idInstrumento = $_GET['id'];
+                $idUsuario = $_SESSION['id_usuario'];
+                $idCarrito = $_SESSION['id_carrito'];
 
                 $carrito = new CarritoModel();
-                $carrito->email = $email;
-                $carrito->subtotal = $subtotal;
-                $carrito->pkCarrito = $pkCarrito;
-                $carrito->pkinstrumento = $pkinstrumento;
+                $carrito->idInstrumento = $idInstrumento;
+                $carrito->idUsuario = $idUsuario;
+                $carrito->idCarrito = $idCarrito;
 
                 $carrito->guardar();
-                echo "lalala ♫";
 
-                header('Location: producto');
+
+                echo "
+                <script lenguage='javascript'>
+                    alert('¡Agregaste un producto a tu carrito');
+                    window.location.replace('../producto#productos');
+                </script>"
+                ;
 
             }else{
 
@@ -58,7 +72,54 @@
             }
         }
 
-        public function cambiarCantidad($cantidad){
+        public function eliminar(){
+            session_start();
+
+            if (isset ($_SESSION['id_usuario'])) {
+                
+                $idInstrumento = $_GET['id'];
+                $idUsuario = $_SESSION['id_usuario'];
+                $idCarrito = $_SESSION['id_carrito'];
+
+                $carrito = new CarritoModel();
+                $carrito->idInstrumento = $idInstrumento;
+                $carrito->idUsuario = $idUsuario;
+                $carrito->idCarrito = $idCarrito;
+
+                $eliminar = $carrito->eliminar();
+                
+                echo "
+                    <script lenguage='javascript'>
+                        alert('¡Producto eliminado del carrito!');
+                        window.location.replace('../carrito');
+                    </script>
+                ";
+
+            }
+        }
+
+        public function vaciar(){
+            session_start();
+
+            if (isset ($_SESSION['id_usuario'])) {
+
+                $idCarrito = $_SESSION['id_carrito'];
+                $carrito = new CarritoModel();
+                $carrito->idCarrito = $idCarrito;
+                
+                $vaciar = $carrito->vaciar();
+
+                echo "
+                    <script lenguage='javascript'>
+                        alert('¡Se eliminaron todos los productos del carrito');
+                        window.location.replace('../carrito');
+                    </script>
+                ";
+            }
+        }
+
+
+/*         public function cambiarCantidad($cantidad){
             
             if (isset($_POST['cantidad'])) {
 
@@ -72,7 +133,7 @@
                 header('Location: carrito');
             }
                 
-        }
+        } */
 
 
 

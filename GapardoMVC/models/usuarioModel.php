@@ -21,26 +21,42 @@
 
         public function registrar(){
             $this->setQuery("INSERT INTO usuario (nombre_usuario, apellido, email, clave, nivel, fecha_alta)
-                            VALUES(:nombre_usuario, :apellido, :email, :clave, :nivel, NOW( ))");
+                            VALUES(:nombre_usuario, :apellido, :email, :clave, :nivel, NOW( ) );
+
+                            INSERT INTO carrito (fk_usuario)
+                            SELECT id_usuario
+                            FROM usuario
+                            WHERE id_usuario = (SELECT MAX(id_usuario) FROM usuario)");
+
             $this->ejecutar(array(
                 ':nombre_usuario' => $this->nombreUsuario,
                 ':apellido' => $this->apellido,
                 ':email' => $this->email,
                 ':clave' => $this->clave,
-                ':nivel' => $this->nivel,
-                //':fecha_alta' => $this->fecha
-            ));            
-        }
+                ':nivel' => $this->nivel
+            ));
+        } 
 
         public function login(){
-            $this->setQuery("SELECT email, clave
-                            FROM usuario
-                            WHERE email = :email AND clave = :clave;");
+            
+            $this->setQuery("SELECT id_usuario, email, clave, id_carrito
+                        FROM usuario
+                        INNER JOIN carrito ON id_usuario = fk_usuario
+                        WHERE email = :email AND clave = :clave;");
             $resultado = $this->obtenerRow(array(
-                        ':email' => $this->email,
-                        ':clave' => $this->clave    
+                ':email' => $this->email,
+                ':clave' => $this->clave
             ));
             return $resultado;
+            
+/*             $this->setQuery("SELECT id_carrito, fk_usuario
+                        FROM carrito
+                        WHERE fk_usuario = :idUsuario;");
+            $resultado = $this->obtenerRow(array(
+                ':idUsuario' => $this->idUsuario
+            ));
+            return $resultado; */
+
         }
 
         public function actualizarDatos($nombreUsuario, $apellido, $email ){
@@ -50,7 +66,7 @@
                             WHERE email = '$email';");
             $this->ejecutar(array(
                 ':nombre_usuario' => $nombreUsuario,
-                ':apellido' => $apellido,
+                ':apellido' => $apellido
             ));               
         }
 

@@ -49,18 +49,15 @@
             $usuario->email = $email;
             $usuario->clave = sha1( $clave );
             $usuario->nivel = 'usuario';
-            $usuario->fecha = 'NOW( )';
 
             $usuario->registrar();
             
             echo "
                 <script lenguage='javascript'>
-                    alert('¡Te has registrado correectamente! Ya puedes iniciar sesión.');
+                    alert('¡Te has registrado correctamente! Ya puedes iniciar sesión.');
                     window.location.replace('../usuario');
                 </script>
             ";
-
-            
         }
 
         public function login( $parametros = array() ){
@@ -77,13 +74,15 @@
             $usuario->clave = sha1( $clave ) ;
 
             $resultado = $usuario->login();
+
             //print_r($resultado[0]);
 
-            if( count( $resultado ) > 0  ) {
+            if( count( $resultado ) > 0 ) {
                 //echo 'Datos validos';
                 session_start();
                 $_SESSION['email'] = $resultado[0]['email'];
-
+                $_SESSION['id_usuario'] = $resultado[0]['id_usuario'];
+                $_SESSION['id_carrito'] = $resultado[0]['id_carrito'];
                 header('Location: ../usuario');
             } else {
                 echo "
@@ -91,11 +90,12 @@
                         alert('¡Usuario o contraseña incorrecta! Vuelve a intentarlo.');
                         window.location.replace('../usuario');
                     </script>
-
                 ";
             }
 
+
         }
+
         public function logout( $parametros = array() ){
             session_start();
             unset( $_SESSION['email'] );
