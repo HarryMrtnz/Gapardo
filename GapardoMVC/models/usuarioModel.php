@@ -48,15 +48,6 @@
                 ':clave' => $this->clave
             ));
             return $resultado;
-            
-/*             $this->setQuery("SELECT id_carrito, fk_usuario
-                        FROM carrito
-                        WHERE fk_usuario = :idUsuario;");
-            $resultado = $this->obtenerRow(array(
-                ':idUsuario' => $this->idUsuario
-            ));
-            return $resultado; */
-
         }
 
         public function actualizarDatos($nombreUsuario, $apellido, $email ){

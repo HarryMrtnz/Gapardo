@@ -6,7 +6,6 @@
         public $nombreCategoria;
         public $tipoCategoria;
 
-        /* Lista en el ABM */
         public function lista(){
             $this->setQuery("SELECT id_categoria, nombre_categoria, nombre_tipo
                             FROM categoria

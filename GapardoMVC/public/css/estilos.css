@@ -40,11 +40,14 @@ header a:hover {
 
                                 /* FOOTER */
 footer {
-    width: 90%;
-    margin: auto;
-
+    height: 120px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
+    
 footer nav {
+    padding-left: 30px;
     height: 50px;
     margin-top: 20px;
 }
@@ -52,6 +55,10 @@ footer nav {
 footer h5{
     text-align: left;
     color: orangered;
+}
+
+footer p{
+    padding-right: 30px;
 }
 
 footer ul li {
@@ -78,12 +85,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: aliceblue; 
 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/fondo.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
+                                    rgba(0, 0, 0, 0.5)), 
+                                    url(../img/fondo.jpg);
     background-repeat: no-repeat;
     background-position: left top;
     background-attachment: fixed;
     background-size: cover;
-
+    position: relative;
+    min-height: 85vh;
+    padding-bottom: 120px;
 }
 
 .fotete {
@@ -232,12 +243,45 @@ body {
 
 .productos .img-fluid {
     width: 100%;
+    height: 100%;
     border-radius: 10px;
+    
+}
+
+.productos .tipos:hover {
+    border: 1px solid yellow;
+}
+
+.productos .tipos{
+    position: relative;
+    overflow: hidden;
     border: 1px solid rgb(117, 112, 112);
 }
 
-.productos .img-fluid:hover {
-    border: 1px solid yellow;
+.productos .tipos p {
+    color: lightgray;
+    position: absolute;
+}
+
+.productos .tipos:hover p{
+    top: 10px;
+    transition: 1s ; 
+}
+
+.productos .tipos:hover .cuerdas{
+    padding-left: 15px;
+}
+
+.productos .tipos:hover .vientos{
+    padding-left: 75px;
+}
+
+.productos .tipos:hover .percusion{
+    padding-left: 70px;
+}
+
+.productos .tipos:hover .otros{
+    padding-left: 20px;
 }
 
 .categorias ul{
@@ -453,7 +497,7 @@ body {
 
 .ficha h4 b {
     color: slategray;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .calificacion {
@@ -566,7 +610,7 @@ body {
 
 #carrito{
     width: 60%;
-    margin: auto    ;
+    margin: auto;
 }
 
 .carrito div{
@@ -639,9 +683,9 @@ body {
 .carrito h4{
     margin: auto;
     margin-top: 10px;
-    width: 15%;
-    border: 1px black solid;
-    border-radius: 10px;
+    width: 40%;
+    border: 1px orange solid;
+/*     border-radius: 10px; */
     background-color: rgb(49, 45, 45, 60%);
     color: yellow;
     padding: 20px;
@@ -652,6 +696,7 @@ body {
 }
 
 .carrito .btns {
+    padding-top: 20px;
     width: 50%;
     display: flex;
     justify-content: space-between;
@@ -659,7 +704,7 @@ body {
 
 .carrito .btns a{
     background-color: rgba(20, 19, 19, 50%);
-    border-radius: 10px;
+/*     border-radius: 10px; */
     border: 1px yellow solid;
     padding: 5px;
     text-decoration: none;

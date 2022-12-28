@@ -2,7 +2,6 @@
     require_once 'core/ConexionPDO.php';
 
     class CarritoModel extends ConexionDB {
-        //public $email;
         public $idCarrito;
         public $idInstrumento;
         public $idUsuario;
@@ -46,23 +45,15 @@
             return $resultado; 
         }
 
-        public function contar(){
+        public function contar($email){
             $this->setQuery("SELECT COUNT(*) AS cantidad
-                            FROM producto_carrito
-                            WHERE fk_carrito = :idCarrito");
-            $this->ejecutar(array(
-                ':idCarrito' => $this->idCarrito
-            ));
+                            FROM producto_carrito pc
+                            INNER JOIN carrito c ON c.id_carrito = pc.fk_carrito
+                            INNER JOIN usuario u ON u.id_usuario = c.fk_usuario
+                            WHERE email = '$email'; ");
+            $resultado = $this->obtenerRow(array( ));
+            return $resultado; 
         }
-
-/*         public function cambiarCantidad($cantidad){
-            $this->setQuery("UPDATE producto_carrito
-                            SET cantidad = :cantidad
-                            WHERE fk_instrumento = :fkInstrumento");
-            $this->ejecutar(array(
-                ':cantidad' => $this->cantidad
-            ));
-        } */
 
     }
 ?>

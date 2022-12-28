@@ -11,10 +11,11 @@
             session_start();
 
             if (isset ($_SESSION['email'])) {
-
                 $email = $_SESSION['email'];
+
                 $carrito = new CarritoModel();
                 $verCarrito = $carrito->verCarrito($email);
+                $contar = $carrito->contar($email);
 
                 require_once('views/header.html');
                 require_once('views/carritoView.php');
@@ -30,12 +31,6 @@
                 ";
             }
         }
-
-/*         public function contar(){
-            
-            $carrito = new CarritoModel();
-            $contarProductos = $carrito->contar();
-        } */
 
         public function guardar( $parametros = array() ){
             session_start();
@@ -117,24 +112,6 @@
                 ";
             }
         }
-
-
-/*         public function cambiarCantidad($cantidad){
-            
-            if (isset($_POST['cantidad'])) {
-
-                $cantidad = $_POST['cantidad'];
-                
-                $carrito = new CarritoModel();
-                $carrito->cantidad = $cantidad;
-                
-                $carrito->cambiarCantidad($cantidad);
-                
-                header('Location: carrito');
-            }
-                
-        } */
-
 
 
 

@@ -12,9 +12,6 @@
             $categoria = new CategoriaModel();
             $lista = $categoria->lista();
 
-            $carrito = new CarritoModel();
-            $contarProductos = $carrito->contar();
-
             if( isset( $_GET['categoria']) ){
                 $categoria = $_GET['categoria'];
 
@@ -32,9 +29,17 @@
                 $listaProductos = $producto->listar();
             }          
             
+            if( isset($_SESSION['email'])){
+                $email = $_SESSION['email'];
+                
+                $carrito = new CarritoModel();
+                $contar = $carrito->contar($email);
+            }
+
             require_once('views/header.html');
             require_once('views/productoView.php');
             require_once('views/footer.html'); 
+            
         }
 
         public function detalle(){
@@ -52,7 +57,6 @@
 
         public function calificar(){
             session_start();
-
             //print_r ($_SESSION);
 
             if(  isset( $_SESSION['email'] )){
@@ -74,7 +78,6 @@
                         $producto->fecha = date ('Y-m-d');
 
                         $producto->calificar();
-                        //echo "calificacion añadida";
 
                         header('Location: ../producto/detalle?id='.$idInstrumento);
 
