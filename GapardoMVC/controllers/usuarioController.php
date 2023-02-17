@@ -71,7 +71,7 @@
 
             $usuario = new UsuarioModel();
             $usuario->email = $email;
-            $usuario->clave = sha1( $clave ) ;
+            $usuario->clave = sha1( $clave );
 
             $resultado = $usuario->login();
 

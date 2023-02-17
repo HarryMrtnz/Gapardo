@@ -44,26 +44,17 @@
                     </ul>
                 </div>
 
-                <?php
-
-                    foreach ($contar as $carrito) {
-                        $contador = $carrito['cantidad'];
-                        
-                        echo"
-                            <ul class='miCarrito'>
-                                <li>                                        
-                                    <a href='carrito'>
-                                        <img src='public/img/carrito.png' alt='carrito'>MI CARRITO ($contador)
-                                    </a>
-                                </li>
-                            </ul>
-                        ";                                
-                    }                           
-                ?>
-                
+                <ul class='miCarrito'>
+                    <li>                                        
+                        <a href='carrito'>
+                            <img src='public/img/carrito.png' alt='carrito'>MI CARRITO
+                        </a>
+                    </li>
+                </ul>
+                                                  
             </div>
 
-            <div class="prods">
+            <div class="prods"> 
 
                 <?php
 

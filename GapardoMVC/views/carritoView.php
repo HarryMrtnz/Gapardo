@@ -24,30 +24,7 @@
 								<td class='nombre'> $nombre</td>
 								<td class='marca'> $marca</td>
 								<td class='precio'> $$precio</td>
-								<td class='cant'>
 
-									<form method='post' selected='selected' name='cant'>
-										
-										<select class='form-control' name='cant'>
-					
-											<option value='1'>x 1</option>
-											<option value='2'>x 2</option>
-											<option value='3'>x 3</option>
-											<option value='4'>x 4</option>
-											<option value='5'>x 5</option>
-											<option value='6'>x 6</option>
-											<option value='7'>x 7</option>
-											<option value='8'>x 8</option>
-											<option value='9'>x 9</option>
-											<option value='10'>x 10</option>
-
-										</select>
-					
-										<input type='submit' value='cambiar'>
-					
-									</form>
-								</td>
-								<td class='subtotal'>$$subtotal</td>
 								<td class='del'> 
 									<a href='carrito/eliminar?id=$idInstrumento'>
 									<img src='public/img/carrito_menos.png' alt='eliminar_producto'>

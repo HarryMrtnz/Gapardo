@@ -641,7 +641,7 @@ body {
 }
 
 .tabla-carrito .precio{
-    color: black;
+    color: orangered;
     text-align: end;
     padding-right: 5px;
     width: 80px;

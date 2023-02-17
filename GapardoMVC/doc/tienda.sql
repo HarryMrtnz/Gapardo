@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-12-2022 a las 22:25:21
+-- Tiempo de generación: 17-02-2023 a las 21:43:09
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -53,7 +53,8 @@ INSERT INTO `calificacion` (`id_calificacion`, `comentario`, `puntuacion`, `fech
 (10, 'Precio y calidad! Muy Bueno', 3, '2022-12-05', 3, 3),
 (11, 'AAAAAAAA', 2, '2022-12-02', 5, 6),
 (12, 'No suena como esperaba, igual bien', 3, '2022-12-06', 1, 7),
-(13, 'Cuanto es en Dolares?', 4, '2022-12-09', 6, 12);
+(13, 'Cuanto es en Dolares?', 4, '2022-12-09', 6, 12),
+(14, 'Por diabetes no puedo comprar la flauta dulce', 4, '2023-02-17', 2, 14);
 
 -- --------------------------------------------------------
 
@@ -166,15 +167,23 @@ CREATE TABLE `producto_carrito` (
 --
 
 INSERT INTO `producto_carrito` (`id_producto_carrito`, `fk_carrito`, `fk_instrumento`) VALUES
-(1, 1, 1),
-(2, 1, 4),
 (4, 4, 2),
 (5, 4, 5),
 (6, 4, 16),
 (7, 5, 17),
 (8, 5, 4),
 (9, 5, 10),
-(10, 5, 1);
+(10, 5, 1),
+(20, 1, 3),
+(21, 1, 14),
+(22, 1, 13),
+(23, 1, 19),
+(24, 2, 10),
+(25, 2, 13),
+(26, 2, 16),
+(27, 2, 1),
+(28, 2, 12),
+(29, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -287,7 +296,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `calificacion`
 --
 ALTER TABLE `calificacion`
-  MODIFY `id_calificacion` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_calificacion` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `carrito`
@@ -311,7 +320,7 @@ ALTER TABLE `instrumento`
 -- AUTO_INCREMENT de la tabla `producto_carrito`
 --
 ALTER TABLE `producto_carrito`
-  MODIFY `id_producto_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_producto_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`

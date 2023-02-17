@@ -113,7 +113,17 @@
             }
         }
 
+        public function cambiarCantidad(){
+            session_start();
 
+            if (isset ($_POST['cant'])) {
+                $cantidad = $_POST['cant'];
+
+                $carrito = new CarritoModel();
+
+                header('Location: ../carrito');
+            }
+        }
 
 
     }
